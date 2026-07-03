@@ -1,83 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>LASERNICS | Precision Laser Systems</title>
-
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LASERNICS | Precision Laser Solutions</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header>
-<div class="nav">
-<div class="logo">LASERNICS</div>
+    <header>
+        <nav class="container">
+            <div class="logo">LASERNICS</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#solutions">Solutions</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<div class="menu">
-<a href="#home">HOME</a>
-<a href="#products">PRODUCTS</a>
-<a href="#about">ABOUT</a>
-<a href="#contact">CONTACT</a>
-</div>
-</div>
-</header>
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Industrial Precision, Driven by Light</h1>
+            <p>최첨단 산업용 레이저 시스템 및 OEM 솔루션 전문 기업, LASERNICS입니다.</p>
+            <a href="#solutions" class="btn">Explore Solutions</a>
+        </div>
+    </section>
 
-<section id="home" class="hero">
+    <section id="about" class="container section">
+        <h2>About LASERNICS</h2>
+        <p>당사는 고도의 레이저 공학 기술을 바탕으로 산업용 레이저 플랫폼과 안정적인 LD 드라이버 솔루션을 개발합니다. 품질과 정밀도를 최우선으로 생각합니다.</p>
+    </section>
 
-<div class="hero-text">
-<h1>Precision Laser Technology</h1>
-<p>Industrial Laser Systems · LD Driver · OEM Solutions</p>
-<a href="#products" class="btn">Explore</a>
-</div>
+    <section id="solutions" class="section-gray">
+        <div class="container">
+            <h2>Core Solutions</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Laser System</h3>
+                    <p>고정밀 산업용 레이저 플랫폼. 다양한 소재와 환경에 최적화된 커스텀 시스템을 제공합니다.</p>
+                </div>
+                <div class="card">
+                    <h3>LD Driver</h3>
+                    <p>초고속 응답 속도와 완벽한 안정성을 자랑하는 전류 제어 모듈입니다.</p>
+                </div>
+                <div class="card">
+                    <h3>OEM Engineering</h3>
+                    <p>고객사의 공정에 최적화된 레이저 구성 및 통합 엔지니어링 서비스를 지원합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-</section>
+    <section id="contact" class="container section">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <input type="text" placeholder="회사명 / 성함" required>
+            <input type="email" placeholder="이메일 주소" required>
+            <textarea placeholder="문의 내용을 입력하세요." rows="5" required></textarea>
+            <button type="submit">문의 보내기</button>
+        </form>
+    </section>
 
-<section id="products" class="section">
+    <footer>
+        <p>&copy; 2026 LASERNICS. All rights reserved.</p>
+    </footer>
 
-<h2>PRODUCTS</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Laser System</h3>
-<p>High precision industrial laser platform.</p>
-</div>
-
-<div class="card">
-<h3>LD Driver</h3>
-<p>Stable current control module.</p>
-</div>
-
-</div>
-
-</section>
-
-<section id="about" class="section dark">
-
-<h2>ABOUT</h2>
-
-<p class="about-text">
-LASERNICS develops precision laser systems and driver solutions
-for industrial and research applications.
-</p>
-
-</section>
-
-<section id="contact" class="section">
-
-<h2>CONTACT</h2>
-
-<p>sales@lasernics.com</p>
-
-</section>
-
-<footer>
-© 2026 LASERNICS
-</footer>
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
