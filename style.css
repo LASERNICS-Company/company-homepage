@@ -2,11 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: Arial;
 }
 
 body {
-  background: #02040a;
+  background: #03060c;
   color: #fff;
   overflow-x: hidden;
 }
@@ -28,51 +28,34 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 20px 60px;
+  background: rgba(0,0,0,0.5);
   backdrop-filter: blur(10px);
-  background: rgba(0,0,0,0.4);
-  z-index: 10;
 }
 
-/* LOGO (직접 제작) */
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
+  color: #00e5ff;
   font-weight: bold;
   letter-spacing: 3px;
-  color: #00e5ff;
 }
 
-/* 레이저 아이콘 */
-.icon {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
+/* semiconductor dot */
+.dot {
+  width: 10px;
+  height: 10px;
   background: #00e5ff;
-  box-shadow:
-    0 0 10px #00e5ff,
-    0 0 20px #00e5ff,
-    0 0 40px #00e5ff;
-  position: relative;
-}
-
-/* 레이저 빔 느낌 라인 */
-.icon::after {
-  content: "";
-  position: absolute;
-  width: 30px;
-  height: 2px;
-  background: linear-gradient(90deg,#00e5ff,transparent);
-  top: 6px;
-  left: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #00e5ff;
 }
 
 /* NAV */
 nav a {
   color: #fff;
-  margin-left: 25px;
-  text-decoration: none;
+  margin-left: 20px;
   opacity: 0.6;
+  text-decoration: none;
 }
 nav a:hover { opacity: 1; }
 
@@ -80,28 +63,28 @@ nav a:hover { opacity: 1; }
 .hero {
   height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
 .hero h1 {
-  font-size: 4rem;
-  background: linear-gradient(90deg,#00e5ff,#0066ff);
+  font-size: 3.8rem;
+  background: linear-gradient(90deg,#00e5ff,#0055ff);
   -webkit-background-clip: text;
   color: transparent;
 }
 
 .hero p {
   opacity: 0.7;
-  margin: 20px 0;
+  margin: 15px 0;
 }
 
 .btn {
   padding: 12px 28px;
   background: #00e5ff;
-  color: #000;
-  border-radius: 30px;
+  color: black;
+  border-radius: 25px;
   font-weight: bold;
   text-decoration: none;
 }
@@ -116,42 +99,36 @@ nav a:hover { opacity: 1; }
 }
 
 h2 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
+  font-size: 2.3rem;
+  margin-bottom: 30px;
 }
 
 /* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(3,1fr);
-  gap: 25px;
+  gap: 20px;
 }
 
 .card {
   background: rgba(255,255,255,0.04);
-  padding: 30px;
-  border-radius: 15px;
+  padding: 25px;
   border: 1px solid rgba(0,255,255,0.1);
-  transition: 0.3s;
+  border-radius: 12px;
 }
 
 .card:hover {
-  transform: translateY(-10px);
   border-color: #00e5ff;
-  box-shadow: 0 0 25px rgba(0,229,255,0.25);
+  transform: translateY(-8px);
+  transition: 0.3s;
 }
 
 /* FORM */
-form {
-  max-width: 500px;
-  display: flex;
-  flex-direction: column;
-}
-
 input, textarea {
+  width: 100%;
   margin: 10px 0;
   padding: 12px;
-  background: #0b0f1a;
+  background: #0a0f18;
   border: 1px solid #222;
   color: white;
 }
