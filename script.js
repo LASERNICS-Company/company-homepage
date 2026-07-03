@@ -1,243 +1,104 @@
-/* ==================================
-   LASERNICS WEBSITE
-================================== */
+/* ================================
+   LASERNICS MOTION ENGINE
+================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* ===============================
-       NAVBAR BLUR
-    =============================== */
+    /* ============================
+       NAVBAR SCROLL EFFECT
+    ============================ */
 
-    const navbar =
-    document.querySelector(".navbar");
+    const navbar = document.querySelector(".navbar");
 
     window.addEventListener("scroll", () => {
 
-        if(window.scrollY > 50){
+        if (window.scrollY > 40) {
 
-            navbar.style.background =
-            "rgba(5,8,17,.82)";
+            navbar.style.background = "rgba(5,7,13,0.85)";
+            navbar.style.backdropFilter = "blur(18px)";
+            navbar.style.borderBottom = "1px solid rgba(255,255,255,0.08)";
 
-            navbar.style.backdropFilter =
-            "blur(20px)";
+        } else {
 
-            navbar.style.borderBottom =
-            "1px solid rgba(255,255,255,.08)";
-
-        }else{
-
-            navbar.style.background =
-            "transparent";
-
-            navbar.style.borderBottom =
-            "1px solid rgba(255,255,255,.04)";
+            navbar.style.background = "transparent";
+            navbar.style.borderBottom = "1px solid rgba(255,255,255,0.04)";
 
         }
 
     });
 
-    /* ===============================
-       HERO 3D EFFECT
-    =============================== */
+    /* ============================
+       HERO PARALLAX (REAL 느낌)
+    ============================ */
 
-    const laserSystem =
-    document.querySelector(".laser-system");
+    const scene = document.querySelector(".laser-scene");
 
-    document.addEventListener(
-        "mousemove",
-        (e)=>{
+    document.addEventListener("mousemove", (e) => {
 
-        if(!laserSystem) return;
+        if (!scene) return;
 
-        const x =
-        (window.innerWidth/2 - e.clientX) / 60;
+        const x = (window.innerWidth / 2 - e.clientX) * 0.02;
+        const y = (window.innerHeight / 2 - e.clientY) * 0.02;
 
-        const y =
-        (window.innerHeight/2 - e.clientY) / 60;
-
-        laserSystem.style.transform =
-
-        `rotateY(${x}deg)
-         rotateX(${-y}deg)`;
+        scene.style.transform = `translate(${x}px, ${y}px)`;
 
     });
 
-    /* ===============================
-       REVEAL ON SCROLL
-    =============================== */
+    /* ============================
+       CARD GLOW FOLLOW MOUSE
+    ============================ */
 
-    const revealItems =
-    document.querySelectorAll(
-
-        ".product-card," +
-        ".tech-box," +
-        ".application-card," +
-        ".research-card"
-
+    const cards = document.querySelectorAll(
+        ".product-card, .tech-card, .application-card, .research-card"
     );
 
-    revealItems.forEach(item=>{
+    cards.forEach(card => {
 
-        item.classList.add("reveal");
+        card.addEventListener("mousemove", (e) => {
+
+            const rect = card.getBoundingClientRect();
+
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+            card.style.setProperty("--x", `${x}%`);
+            card.style.setProperty("--y", `${y}%`);
+
+        });
 
     });
 
-    const observer =
-    new IntersectionObserver(
+    /* ============================
+       SCROLL REVEAL
+    ============================ */
 
-        entries=>{
-
-            entries.forEach(entry=>{
-
-                if(entry.isIntersecting){
-
-                    entry.target.classList.add(
-                        "active"
-                    );
-
-                }
-
-            });
-
-        },
-
-        {
-            threshold:0.15
-        }
-
+    const items = document.querySelectorAll(
+        ".product-card, .tech-card, .application-card, .research-card, .stat-card"
     );
 
-    revealItems.forEach(item=>{
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+
+            }
+
+        });
+
+    }, { threshold: 0.15 });
+
+    items.forEach(item => {
+
+        item.style.opacity = "0";
+        item.style.transform = "translateY(40px)";
+        item.style.transition = "0.8s ease";
 
         observer.observe(item);
 
     });
 
-    /* ===============================
-       CARD GLOW
-    =============================== */
-
-    const cards =
-    document.querySelectorAll(
-
-        ".product-card," +
-        ".tech-box," +
-        ".application-card," +
-        ".research-card"
-
-    );
-
-    cards.forEach(card=>{
-
-        card.addEventListener(
-            "mousemove",
-            (e)=>{
-
-                const rect =
-                card.getBoundingClientRect();
-
-                const x =
-                e.clientX - rect.left;
-
-                const y =
-                e.clientY - rect.top;
-
-                card.style.background =
-
-                `radial-gradient(
-                circle at ${x}px ${y}px,
-                rgba(0,212,255,.12),
-                rgba(255,255,255,.03) 55%
-                )`;
-
-            }
-        );
-
-        card.addEventListener(
-            "mouseleave",
-            ()=>{
-
-                card.style.background =
-                "rgba(255,255,255,.03)";
-
-            }
-        );
-
-    });
-
-    /* ===============================
-       SMOOTH SCROLL
-    =============================== */
-
-    document
-    .querySelectorAll(
-        'a[href^="#"]'
-    )
-    .forEach(anchor=>{
-
-        anchor.addEventListener(
-            "click",
-            function(e){
-
-                e.preventDefault();
-
-                const target =
-                document.querySelector(
-
-                    this.getAttribute(
-                        "href"
-                    )
-
-                );
-
-                if(target){
-
-                    target.scrollIntoView({
-
-                        behavior:"smooth"
-
-                    });
-
-                }
-
-            }
-
-        );
-
-    });
-
 });
-
-/* ==================================
-   DYNAMIC CSS
-================================== */
-
-const style =
-document.createElement("style");
-
-style.innerHTML = `
-
-.reveal{
-
-opacity:0;
-
-transform:
-translateY(50px);
-
-transition:
-all .9s ease;
-
-}
-
-.reveal.active{
-
-opacity:1;
-
-transform:
-translateY(0);
-
-}
-
-`;
-
-document.head.appendChild(style);
