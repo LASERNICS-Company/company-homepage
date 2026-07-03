@@ -1,60 +1,31 @@
-const canvas = document.getElementById("bg");
+const canvas = document.getElementById("scan");
 const ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const grid = 40;
-const marks = [];
+let y = 0;
 
-let scanY = 0;
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
 
-// wafer grid
-function drawGrid(){
-  ctx.strokeStyle = "rgba(255,255,255,0.03)";
-  for(let x=0;x<canvas.width;x+=grid){
-    for(let y=0;y<canvas.height;y+=grid){
-      ctx.strokeRect(x,y,grid,grid);
-    }
-  }
+  // slow scan line (핵심)
+  y += 0.6;
+  if(y > canvas.height) y = 0;
+
+  // glow effect
+  const gradient = ctx.createLinearGradient(0, y, canvas.width, y);
+  gradient.addColorStop(0, "transparent");
+  gradient.addColorStop(0.5, "rgba(120,180,255,0.08)");
+  gradient.addColorStop(1, "transparent");
+
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, y, canvas.width, 2);
+
+  requestAnimationFrame(draw);
 }
 
-// laser engraving marks
-function drawMarks(){
-  marks.forEach(m=>{
-    ctx.fillStyle = "rgba(0,229,255,0.8)";
-    ctx.fillRect(m.x, m.y, 3, 3);
-  });
-}
-
-function animate(){
-
-  ctx.fillStyle = "rgba(3,6,12,0.35)";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-
-  drawGrid();
-
-  // laser scan line
-  scanY += 2;
-  if(scanY > canvas.height) scanY = 0;
-
-  ctx.fillStyle = "rgba(0,229,255,0.08)";
-  ctx.fillRect(0, scanY, canvas.width, 3);
-
-  // engraving effect (pattern creation)
-  for(let i=0;i<8;i++){
-    marks.push({
-      x: Math.floor(Math.random()*canvas.width/grid)*grid,
-      y: scanY + Math.random()*20
-    });
-  }
-
-  drawMarks();
-
-  requestAnimationFrame(animate);
-}
-
-animate();
+draw();
 
 window.addEventListener("resize",()=>{
   canvas.width = window.innerWidth;
