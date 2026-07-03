@@ -1,69 +1,74 @@
-const canvas = document.getElementById("chip");
+const canvas = document.getElementById("wafer");
 const ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const grid = 50;
-
-// IC chip blocks (반도체 느낌 구조)
-const blocks = [];
-for(let i=0;i<200;i++){
-  blocks.push({
-    x: Math.random()*canvas.width,
-    y: Math.random()*canvas.height,
-    w: Math.random()*40+10,
-    h: Math.random()*40+10
-  });
+function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 }
+window.addEventListener("resize", resize);
 
-// laser path
-let laserX = 0;
-let laserY = 0;
+// ===============================
+// 1. CHIP LAYOUT (정돈된 구조)
+// ===============================
+const cell = 60;
 
 function drawChip(){
-  ctx.fillStyle = "rgba(255,255,255,0.03)";
+  ctx.strokeStyle = "rgba(0,180,255,0.08)";
+  ctx.lineWidth = 1;
 
-  for(let i=0;i<blocks.length;i++){
-    const b = blocks[i];
-    ctx.fillRect(b.x,b.y,b.w,b.h);
+  for(let x=0;x<canvas.width;x+=cell){
+    for(let y=0;y<canvas.height;y+=cell){
+
+      // 메인 셀
+      ctx.strokeRect(x,y,cell,cell);
+
+      // 내부 구조 (IC 느낌)
+      ctx.beginPath();
+      ctx.moveTo(x+10, y+10);
+      ctx.lineTo(x+cell-10, y+10);
+      ctx.lineTo(x+cell-10, y+cell-10);
+      ctx.lineTo(x+10, y+cell-10);
+      ctx.closePath();
+      ctx.stroke();
+    }
   }
 }
 
+// ===============================
+// 2. LASER SCAN (현실적인 방식)
+// ===============================
+let scanY = 0;
+
+function drawLaser(){
+  // 넓은 스캔 밴드 (장비 느낌)
+  const grad = ctx.createLinearGradient(0, scanY-30, 0, scanY+30);
+  grad.addColorStop(0, "transparent");
+  grad.addColorStop(0.5, "rgba(0,200,255,0.12)");
+  grad.addColorStop(1, "transparent");
+
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, scanY-30, canvas.width, 60);
+}
+
+// ===============================
+// 3. LOOP
+// ===============================
 function animate(){
 
-  // fade (잔상 = 웨이퍼 느낌)
-  ctx.fillStyle = "rgba(5,6,10,0.25)";
+  // fade (잔상 = 장비 스캔 느낌)
+  ctx.fillStyle = "rgba(5,7,11,0.25)";
   ctx.fillRect(0,0,canvas.width,canvas.height);
 
   drawChip();
 
-  // 🔥 레이저 움직임 (핵심)
-  laserX += 3;
-  laserY += Math.sin(laserX*0.01)*2;
+  // scan move
+  scanY += 1.8;
+  if(scanY > canvas.height) scanY = 0;
 
-  if(laserX > canvas.width){
-    laserX = 0;
-  }
-
-  // laser beam
-  ctx.strokeStyle = "rgba(0,200,255,0.8)";
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.moveTo(laserX, 0);
-  ctx.lineTo(laserX, canvas.height);
-  ctx.stroke();
-
-  // laser impact (패턴 생성)
-  for(let i=0;i<3;i++){
-    ctx.fillStyle = "rgba(0,200,255,0.9)";
-    ctx.fillRect(
-      laserX + Math.random()*10,
-      Math.random()*canvas.height,
-      2,
-      2
-    );
-  }
+  drawLaser();
 
   requestAnimationFrame(animate);
 }
