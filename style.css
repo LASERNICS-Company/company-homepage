@@ -3,15 +3,15 @@
 :root{
 
 --bg:#050811;
---bg2:#0b1020;
+--bg2:#0a1020;
 
---surface:#101726;
+--surface:#101826;
 
 --primary:#3b82ff;
 --secondary:#00d4ff;
 
 --text:#f5f8ff;
---muted:#9aa8c3;
+--muted:#93a3c5;
 
 --border:rgba(255,255,255,.08);
 
@@ -55,29 +55,27 @@ background:
 
 radial-gradient(
 circle at 15% 20%,
-rgba(59,130,255,.18),
+rgba(59,130,255,.15),
 transparent 35%
 ),
 
 radial-gradient(
-circle at 85% 30%,
-rgba(0,212,255,.12),
+circle at 80% 30%,
+rgba(0,212,255,.10),
 transparent 35%
 ),
 
 radial-gradient(
-circle at 50% 90%,
-rgba(59,130,255,.10),
-transparent 40%
+circle at 50% 100%,
+rgba(59,130,255,.08),
+transparent 50%
 );
 
 z-index:-3;
 
 }
 
-body::after{
-
-content:"";
+.bg-noise{
 
 position:fixed;
 
@@ -94,9 +92,11 @@ linear-gradient(
 rgba(255,255,255,.02) 1px,
 transparent 1px);
 
-background-size:80px 80px;
+background-size:70px 70px;
 
-opacity:.6;
+opacity:.5;
+
+pointer-events:none;
 
 z-index:-2;
 
@@ -115,16 +115,17 @@ left:0;
 
 width:100%;
 
+padding:24px 80px;
+
 display:flex;
 
 justify-content:space-between;
 align-items:center;
 
-padding:24px 80px;
+backdrop-filter:blur(12px);
 
-backdrop-filter:blur(16px);
-
-border-bottom:1px solid rgba(255,255,255,.04);
+border-bottom:
+1px solid rgba(255,255,255,.04);
 
 z-index:1000;
 
@@ -138,15 +139,15 @@ align-items:center;
 
 gap:12px;
 
+font-size:18px;
+
 font-weight:800;
 
 letter-spacing:4px;
 
-font-size:18px;
-
 }
 
-.logo-mark{
+.logo-symbol{
 
 width:12px;
 height:12px;
@@ -164,7 +165,7 @@ var(--secondary)
 box-shadow:
 
 0 0 20px var(--primary),
-0 0 50px var(--secondary);
+0 0 40px var(--secondary);
 
 }
 
@@ -172,7 +173,7 @@ nav{
 
 display:flex;
 
-gap:35px;
+gap:40px;
 
 }
 
@@ -204,17 +205,26 @@ min-height:100vh;
 
 display:grid;
 
-grid-template-columns:1.15fr 1fr;
+grid-template-columns:
+1.15fr 1fr;
 
 align-items:center;
 
-padding:0 80px;
-
 gap:80px;
+
+padding:0 80px;
 
 }
 
-.hero-label{
+.hero-left{
+
+max-width:760px;
+
+}
+
+.eyebrow{
+
+display:inline-block;
 
 font-size:13px;
 
@@ -228,17 +238,15 @@ margin-bottom:25px;
 
 .hero h1{
 
-font-size:78px;
+font-size:82px;
 
 line-height:1.02;
 
 margin-bottom:30px;
 
-max-width:850px;
-
 }
 
-.hero-description{
+.hero p{
 
 font-size:19px;
 
@@ -246,7 +254,7 @@ line-height:1.9;
 
 color:var(--muted);
 
-max-width:700px;
+max-width:650px;
 
 }
 
@@ -281,7 +289,6 @@ var(--secondary)
 );
 
 box-shadow:
-
 0 0 30px rgba(59,130,255,.3);
 
 }
@@ -298,9 +305,11 @@ font-weight:600;
 
 color:white;
 
-border:1px solid var(--border);
+background:
+rgba(255,255,255,.03);
 
-background:rgba(255,255,255,.03);
+border:
+1px solid var(--border);
 
 }
 
@@ -308,7 +317,7 @@ background:rgba(255,255,255,.03);
 
 display:flex;
 
-gap:50px;
+gap:60px;
 
 margin-top:60px;
 
@@ -316,13 +325,13 @@ margin-top:60px;
 
 .hero-stats h3{
 
-font-size:32px;
+font-size:34px;
 
 margin-bottom:8px;
 
 }
 
-.hero-stats p{
+.hero-stats span{
 
 color:var(--muted);
 
@@ -331,138 +340,174 @@ font-size:14px;
 }
 
 /* ===================================
-PREMIUM PHOTONICS VISUAL
+INDUSTRIAL LASER HERO
 =================================== */
 
-.hero-visual{
-
-position:relative;
-
-height:850px;
+.hero-right{
 
 display:flex;
+
 justify-content:center;
 align-items:center;
 
-overflow:hidden;
+}
+
+.laser-system{
+
+position:relative;
+
+width:700px;
+height:500px;
+
+perspective:1200px;
 
 }
 
-.wafer-grid{
+/* Shadow */
+
+.system-shadow{
 
 position:absolute;
 
-inset:0;
+bottom:40px;
+left:120px;
 
-background-image:
-
-linear-gradient(
-rgba(255,255,255,.03) 1px,
-transparent 1px),
-
-linear-gradient(
-90deg,
-rgba(255,255,255,.03) 1px,
-transparent 1px);
-
-background-size:60px 60px;
-
-opacity:.25;
-
-}
-
-/* Photon Field */
-
-.photon-wave{
-
-position:absolute;
+width:450px;
+height:80px;
 
 border-radius:50%;
 
-border:
-1px solid rgba(0,212,255,.10);
+background:
+rgba(0,0,0,.5);
 
-backdrop-filter:blur(4px);
-
-}
-
-.wave1{
-
-width:750px;
-height:750px;
-
-animation:
-spinA 60s linear infinite;
+filter:blur(40px);
 
 }
 
-.wave2{
+/* Main Chassis */
 
-width:540px;
-height:540px;
-
-animation:
-spinB 40s linear infinite;
-
-}
-
-.wave3{
-
-width:340px;
-height:340px;
-
-animation:
-spinA 24s linear infinite;
-
-}
-
-@keyframes spinA{
-
-from{
-transform:rotate(0deg);
-}
-
-to{
-transform:rotate(360deg);
-}
-
-}
-
-@keyframes spinB{
-
-from{
-transform:rotate(360deg);
-}
-
-to{
-transform:rotate(0deg);
-}
-
-}
-
-/* Laser Chamber */
-
-.laser-chamber{
-
-position:relative;
-
-width:500px;
-height:500px;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-}
-
-/* Core Glow */
-
-.laser-glow{
+.laser-body{
 
 position:absolute;
 
-width:180px;
-height:180px;
+left:80px;
+top:120px;
+
+width:420px;
+height:220px;
+
+border-radius:18px;
+
+background:
+
+linear-gradient(
+145deg,
+#1f283a,
+#0c111c
+);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+box-shadow:
+
+0 30px 80px rgba(0,0,0,.5),
+0 0 50px rgba(59,130,255,.08);
+
+transform:
+rotateY(-12deg);
+
+}
+
+/* Brand */
+
+.laser-logo{
+
+position:absolute;
+
+left:30px;
+top:35px;
+
+font-size:24px;
+
+font-weight:800;
+
+letter-spacing:4px;
+
+}
+
+/* Cooling Vents */
+
+.laser-vents{
+
+position:absolute;
+
+right:40px;
+top:45px;
+
+width:90px;
+height:90px;
+
+background:
+
+repeating-linear-gradient(
+to bottom,
+rgba(255,255,255,.12),
+rgba(255,255,255,.12) 4px,
+transparent 4px,
+transparent 12px
+);
+
+}
+
+/* Optical Head */
+
+.laser-head{
+
+position:absolute;
+
+right:90px;
+top:135px;
+
+width:170px;
+height:170px;
+
+border-radius:20px;
+
+background:
+
+linear-gradient(
+145deg,
+#25324a,
+#0f1623
+);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+box-shadow:
+
+0 0 40px rgba(59,130,255,.15);
+
+transform:
+rotateY(12deg);
+
+}
+
+/* Lens */
+
+.lens-core{
+
+position:absolute;
+
+left:50%;
+top:50%;
+
+transform:
+translate(-50%,-50%);
+
+width:90px;
+height:90px;
 
 border-radius:50%;
 
@@ -470,156 +515,99 @@ background:
 
 radial-gradient(
 circle,
-rgba(255,255,255,.95),
-rgba(0,212,255,.75),
-transparent 75%
+#ffffff,
+#00d4ff,
+transparent
 );
 
-filter:blur(24px);
+filter:blur(6px);
 
 box-shadow:
 
-0 0 60px #00d4ff,
-0 0 140px #3b82ff,
-0 0 280px #00d4ff;
+0 0 40px #00d4ff,
+0 0 80px #3b82ff,
+0 0 140px #00d4ff;
 
 animation:
-pulseGlow 4s ease-in-out infinite;
+lensPulse 4s ease infinite;
 
 }
 
-@keyframes pulseGlow{
+@keyframes lensPulse{
 
 0%{
 
-transform:scale(1);
-
-opacity:.7;
+transform:
+translate(-50%,-50%) scale(1);
 
 }
 
 50%{
 
-transform:scale(1.12);
-
-opacity:1;
+transform:
+translate(-50%,-50%) scale(1.12);
 
 }
 
 100%{
 
-transform:scale(1);
-
-opacity:.7;
-
-}
-
-}
-
-/* Optical Glass */
-
-.optic{
-
-position:absolute;
-
-background:
-rgba(255,255,255,.03);
-
-backdrop-filter:
-blur(20px);
-
-border:
-1px solid rgba(255,255,255,.10);
-
-box-shadow:
-
-0 0 30px rgba(255,255,255,.04);
-
-}
-
-.optic1{
-
-width:260px;
-height:420px;
-
 transform:
-rotate(-18deg);
+translate(-50%,-50%) scale(1);
 
 }
-
-.optic2{
-
-width:220px;
-height:360px;
-
-transform:
-rotate(10deg);
-
-}
-
-.optic3{
-
-width:180px;
-height:260px;
-
-transform:
-rotate(28deg);
 
 }
 
 /* Beam */
 
-.beam{
+.laser-beam{
 
 position:absolute;
 
-width:700px;
-height:4px;
+left:430px;
+top:215px;
+
+width:350px;
+height:3px;
 
 background:
 
 linear-gradient(
 90deg,
-transparent,
-rgba(0,212,255,.9),
-transparent
+rgba(255,255,255,.1),
+rgba(255,255,255,1),
+rgba(0,212,255,.9)
 );
 
 box-shadow:
 
 0 0 15px #00d4ff,
 0 0 35px #00d4ff,
-0 0 70px #3b82ff;
+0 0 80px #3b82ff;
 
 animation:
-beamPulse 3s ease infinite;
+beamPulse 2.5s ease infinite;
 
 }
 
 @keyframes beamPulse{
 
 0%{
-
-opacity:.4;
-
+opacity:.45;
 }
 
 50%{
-
 opacity:1;
-
 }
 
 100%{
-
-opacity:.4;
-
+opacity:.45;
 }
 
 }
 
 /* ===================================
-SECTIONS
+SECTION COMMON
 =================================== */
 
 section{
@@ -628,13 +616,13 @@ padding:120px 80px;
 
 }
 
-.section-header{
+.section-title{
 
 margin-bottom:60px;
 
 }
 
-.section-header p{
+.section-title span{
 
 color:var(--secondary);
 
@@ -642,31 +630,45 @@ letter-spacing:3px;
 
 font-size:13px;
 
-margin-bottom:10px;
+display:block;
+
+margin-bottom:12px;
 
 }
 
-.section-header h2{
+.section-title h2{
 
-font-size:52px;
+font-size:56px;
+
+line-height:1.1;
+
+max-width:700px;
 
 }
 
-/* Trusted */
+/* ===================================
+TRUSTED
+=================================== */
 
 .trusted{
+
+padding-top:40px;
 
 text-align:center;
 
 }
 
-.trusted p{
+.trusted span{
+
+display:block;
+
+margin-bottom:30px;
 
 color:var(--secondary);
 
 letter-spacing:4px;
 
-margin-bottom:30px;
+font-size:13px;
 
 }
 
@@ -682,7 +684,7 @@ gap:50px;
 
 }
 
-.trusted-grid span{
+.trusted-grid div{
 
 font-size:18px;
 
@@ -692,7 +694,9 @@ opacity:.7;
 
 }
 
-/* Products */
+/* ===================================
+PRODUCTS
+=================================== */
 
 .product-grid{
 
@@ -709,15 +713,18 @@ gap:25px;
 
 padding:40px;
 
+border-radius:24px;
+
 background:
 rgba(255,255,255,.03);
 
 border:
-1px solid var(--border);
-
-border-radius:20px;
+1px solid rgba(255,255,255,.08);
 
 transition:.35s;
+
+backdrop-filter:
+blur(20px);
 
 }
 
@@ -729,31 +736,48 @@ translateY(-10px);
 border-color:
 rgba(0,212,255,.3);
 
+box-shadow:
+
+0 0 40px rgba(0,212,255,.08);
+
 }
 
 .product-tag{
+
+display:inline-block;
+
+padding:8px 12px;
+
+border-radius:999px;
 
 font-size:12px;
 
 letter-spacing:2px;
 
+background:
+rgba(0,212,255,.08);
+
 color:var(--secondary);
+
+margin-bottom:20px;
 
 }
 
 .product-card h3{
 
-font-size:30px;
+font-size:32px;
 
-margin:20px 0;
+margin-bottom:20px;
 
 }
 
 .product-card p{
 
-line-height:1.8;
+line-height:1.9;
 
 color:var(--muted);
+
+margin-bottom:25px;
 
 }
 
@@ -761,19 +785,21 @@ color:var(--muted);
 
 list-style:none;
 
-margin-top:20px;
-
 }
 
 .product-card li{
 
 margin-bottom:10px;
 
+color:#d7e0f2;
+
 }
 
-/* Applications */
+/* ===================================
+TECHNOLOGY
+=================================== */
 
-.industry-grid{
+.technology-grid{
 
 display:grid;
 
@@ -784,116 +810,137 @@ gap:25px;
 
 }
 
-.industry-card{
+.tech-box{
 
 padding:40px;
+
+border-radius:24px;
 
 background:
 rgba(255,255,255,.03);
 
 border:
-1px solid var(--border);
-
-border-radius:20px;
+1px solid rgba(255,255,255,.08);
 
 }
 
-.industry-card h3{
+.tech-box h3{
 
 font-size:28px;
-
-margin-bottom:15px;
-
-}
-
-.industry-card p{
-
-line-height:1.8;
-
-color:var(--muted);
-
-}
-
-/* Technology */
-
-.technology{
-
-background:
-rgba(255,255,255,.02);
-
-}
-
-.technology-content{
-
-display:grid;
-
-grid-template-columns:
-1fr 1fr;
-
-gap:80px;
-
-}
-
-.small-title{
-
-color:var(--secondary);
 
 margin-bottom:20px;
 
 }
 
-.technology h2{
+.tech-box p{
 
-font-size:52px;
-
-}
-
-.technology p{
-
-line-height:2;
+line-height:1.9;
 
 color:var(--muted);
 
 }
 
-/* Stats */
+/* ===================================
+APPLICATIONS
+=================================== */
 
-.stats{
+.application-grid{
 
 display:grid;
 
 grid-template-columns:
-repeat(4,1fr);
+repeat(3,1fr);
 
-text-align:center;
-
-}
-
-.stat h3{
-
-font-size:48px;
-
-margin-bottom:10px;
+gap:25px;
 
 }
 
-.stat p{
+.application-card{
+
+padding:40px;
+
+border-radius:24px;
+
+background:
+rgba(255,255,255,.03);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+}
+
+.application-card h3{
+
+font-size:28px;
+
+margin-bottom:20px;
+
+}
+
+.application-card p{
+
+line-height:1.9;
 
 color:var(--muted);
 
 }
 
-/* Contact */
+/* ===================================
+RESEARCH
+=================================== */
 
-.contact{
+.research-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(3,1fr);
+
+gap:25px;
+
+}
+
+.research-card{
+
+padding:40px;
+
+border-radius:24px;
+
+background:
+rgba(255,255,255,.03);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+}
+
+.research-card h3{
+
+font-size:28px;
+
+margin-bottom:20px;
+
+}
+
+.research-card p{
+
+line-height:1.9;
+
+color:var(--muted);
+
+}
+
+/* ===================================
+CONTACT
+=================================== */
+
+.contact-section{
 
 text-align:center;
 
 }
 
-.contact h2{
-
-font-size:58px;
+.contact-container{
 
 max-width:900px;
 
@@ -901,83 +948,165 @@ margin:auto;
 
 }
 
-.contact p{
+.contact-container span{
 
-margin-top:25px;
+display:block;
+
+margin-bottom:20px;
+
+color:var(--secondary);
+
+letter-spacing:4px;
+
+}
+
+.contact-container h2{
+
+font-size:72px;
+
+line-height:1.1;
+
+margin-bottom:25px;
+
+}
+
+.contact-container p{
+
+font-size:20px;
+
+line-height:1.9;
 
 color:var(--muted);
 
+margin-bottom:40px;
+
 }
 
-.contact a{
+.contact-button{
 
 display:inline-block;
 
-margin-top:35px;
+padding:18px 36px;
 
-font-size:24px;
-
-color:white;
+border-radius:14px;
 
 text-decoration:none;
 
+font-weight:700;
+
+color:white;
+
+background:
+
+linear-gradient(
+135deg,
+var(--primary),
+var(--secondary)
+);
+
+box-shadow:
+
+0 0 40px rgba(59,130,255,.3);
+
 }
 
-/* Footer */
+/* ===================================
+FOOTER
+=================================== */
 
 footer{
 
-padding:80px 20px;
-
-text-align:center;
+padding:100px 80px 40px;
 
 border-top:
-1px solid var(--border);
+1px solid rgba(255,255,255,.08);
 
 }
 
-.footer-logo{
+.footer-top{
 
-font-size:28px;
+display:grid;
 
-font-weight:800;
+grid-template-columns:
+2fr 1fr 1fr;
 
-letter-spacing:4px;
+gap:60px;
+
+margin-bottom:60px;
+
+}
+
+.footer-top h3{
+
+font-size:30px;
 
 margin-bottom:15px;
 
 }
 
-footer p{
+.footer-top h4{
 
-margin:10px 0;
+margin-bottom:15px;
+
+}
+
+.footer-top p{
+
+margin-bottom:10px;
 
 color:var(--muted);
 
 }
 
-/* Mobile */
+.footer-bottom{
 
-@media(max-width:1100px){
+padding-top:30px;
+
+border-top:
+1px solid rgba(255,255,255,.08);
+
+color:var(--muted);
+
+}
+
+/* ===================================
+MOBILE
+=================================== */
+
+@media(max-width:1200px){
 
 .hero{
 
 grid-template-columns:1fr;
 
-}
-
-.product-grid,
-.industry-grid,
-.stats,
-.technology-content{
-
-grid-template-columns:1fr;
+padding-top:140px;
 
 }
 
 .hero h1{
 
-font-size:52px;
+font-size:64px;
+
+}
+
+.hero-right{
+
+margin-top:40px;
+
+}
+
+.product-grid,
+.technology-grid,
+.application-grid,
+.research-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.footer-top{
+
+grid-template-columns:1fr;
 
 }
 
@@ -999,7 +1128,8 @@ display:none;
 
 .hero{
 
-padding:120px 24px 60px;
+padding-left:24px;
+padding-right:24px;
 
 }
 
@@ -1011,7 +1141,7 @@ padding:80px 24px;
 
 .hero h1{
 
-font-size:42px;
+font-size:44px;
 
 }
 
@@ -1019,15 +1149,20 @@ font-size:42px;
 
 flex-direction:column;
 
-gap:20px;
+gap:25px;
 
 }
 
-.hero-visual{
+.contact-container h2{
 
-height:500px;
+font-size:48px;
+
+}
+
+.laser-system{
+
+transform:scale(.7);
 
 }
 
 }
-
