@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LASERNICS | Laser Systems Engineering</title>
-  <link rel="stylesheet" href="style.css"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LASERNICS | Laser Systems Engineering</title>
+<link rel="stylesheet" href="style.css"/>
 </head>
 
 <body>
 
-<div id="cursor"></div>
+<canvas id="bg"></canvas>
 
 <header>
   <div class="logo">LASERNICS</div>
@@ -17,17 +17,16 @@
     <a href="#about">ABOUT</a>
     <a href="#tech">TECH</a>
     <a href="#products">SYSTEMS</a>
+    <a href="#industries">INDUSTRY</a>
     <a href="#contact">CONTACT</a>
   </nav>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <canvas id="bg"></canvas>
-
-  <div class="hero-content">
-    <h1>We Build Laser Systems</h1>
-    <p>High-power precision laser engineering for next-generation industry</p>
+  <div class="hero-inner">
+    <h1>We Design Light as Power</h1>
+    <p>Next-generation laser systems for precision industry</p>
     <a href="#products" class="btn">Explore Systems</a>
   </div>
 </section>
@@ -36,8 +35,8 @@
 <section id="about" class="section">
   <h2>ABOUT LASERNICS</h2>
   <p>
-    LASERNICS는 산업용 고출력 레이저 시스템을 설계·제조하는 기술 기업입니다.  
-    정밀 광학, 빔 제어, 고출력 안정화 기술을 기반으로 차세대 레이저 솔루션을 제공합니다.
+    LASERNICS는 산업용 고출력 레이저 시스템을 설계·개발하는 기술 기업입니다.
+    광학 엔진, 빔 제어, 에너지 안정화 기술을 기반으로 정밀 산업의 표준을 재정의합니다.
   </p>
 </section>
 
@@ -47,18 +46,18 @@
 
   <div class="grid">
     <div class="card">
-      <h3>Fiber Laser Engine</h3>
-      <p>고효율 광섬유 기반 레이저 생성 시스템</p>
+      <h3>Fiber Laser Core</h3>
+      <p>High-efficiency fiber-based laser engine architecture</p>
     </div>
 
     <div class="card">
-      <h3>Beam Control AI</h3>
-      <p>실시간 빔 안정화 및 자동 보정 알고리즘</p>
+      <h3>Beam Intelligence</h3>
+      <p>AI-controlled beam stabilization & adaptive tuning</p>
     </div>
 
     <div class="card">
-      <h3>Thermal Stability</h3>
-      <p>고출력 환경에서도 안정적인 출력 유지</p>
+      <h3>Energy Stability</h3>
+      <p>Thermal & optical stabilization under extreme load</p>
     </div>
   </div>
 </section>
@@ -69,36 +68,47 @@
 
   <div class="grid">
     <div class="card glow">
-      <h3>LSX-2000</h3>
-      <p>Industrial Cutting Laser System</p>
+      <h3>LASERNICS X-3000</h3>
+      <p>Ultra High Power Industrial Laser Platform</p>
     </div>
 
     <div class="card glow">
-      <h3>LSX-Micro</h3>
-      <p>Micro Precision Laser Module</p>
+      <h3>MICRO BEAM S1</h3>
+      <p>Micro-scale precision laser system</p>
     </div>
 
     <div class="card glow">
-      <h3>LSX-Pro Beam</h3>
-      <p>High Power Beam Generator</p>
+      <h3>PRO CUT SERIES</h3>
+      <p>Automated high-speed cutting system</p>
     </div>
   </div>
 </section>
 
+<!-- INDUSTRY -->
+<section id="industries" class="section dark">
+  <h2>INDUSTRIES</h2>
+
+  <div class="grid">
+    <div class="card">Semiconductor</div>
+    <div class="card">Aerospace</div>
+    <div class="card">Medical Devices</div>
+  </div>
+</section>
+
 <!-- CONTACT -->
-<section id="contact" class="section dark">
-  <h2>CONTACT</h2>
+<section id="contact" class="section">
+  <h2>CONTACT ENGINEERING</h2>
 
   <form>
     <input type="text" placeholder="Name" required>
     <input type="email" placeholder="Email" required>
-    <textarea placeholder="Project Inquiry"></textarea>
-    <button>Send Request</button>
+    <textarea placeholder="Project / Requirement"></textarea>
+    <button type="submit">Request Consultation</button>
   </form>
 </section>
 
 <footer>
-  © 2026 LASERNICS. All rights reserved.
+  © 2026 LASERNICS. Precision in Light.
 </footer>
 
 <script src="script.js"></script>
