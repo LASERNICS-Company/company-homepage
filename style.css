@@ -1,159 +1,33 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, sans-serif;
+:root {
+    --primary-color: #e63946; /* 포인트 레드 */
+    --text-color: #333;
+    --bg-color: #f4f4f4;
+    --dark-bg: #111;
 }
 
-html{
-scroll-behavior:smooth;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Pretendard', sans-serif; line-height: 1.6; color: var(--text-color); }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-body{
-background:#05060a;
-color:white;
-overflow-x:hidden;
-}
+header { background: #fff; padding: 20px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+nav { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-weight: 800; font-size: 1.5rem; letter-spacing: 2px; }
+.nav-links { display: flex; list-style: none; }
+.nav-links li a { text-decoration: none; color: #333; margin-left: 30px; font-weight: 600; transition: color 0.3s; }
+.nav-links li a:hover { color: var(--primary-color); }
 
-/* HEADER */
-header{
-position:fixed;
-top:0;
-width:100%;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
-border-bottom:1px solid rgba(255,255,255,0.05);
-z-index:1000;
-}
+.hero { height: 80vh; background: var(--dark-bg); color: #fff; display: flex; align-items: center; text-align: center; }
+.hero h1 { font-size: 3rem; margin-bottom: 20px; }
+.btn { display: inline-block; padding: 15px 30px; background: var(--primary-color); color: #fff; text-decoration: none; margin-top: 20px; border-radius: 5px; }
 
-.nav{
-max-width:1200px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 20px;
-}
+.section { padding: 80px 0; text-align: center; }
+.section-gray { padding: 80px 0; background: var(--bg-color); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+.card { background: #fff; padding: 40px; border-radius: 10px; transition: transform 0.3s; }
+.card:hover { transform: translateY(-10px); }
 
-.logo{
-font-size:20px;
-font-weight:bold;
-letter-spacing:3px;
-color:#4da3ff;
-}
-
-.menu a{
-color:white;
-text-decoration:none;
-margin-left:20px;
-font-size:14px;
-opacity:0.8;
-transition:0.3s;
-}
-
-.menu a:hover{
-opacity:1;
-color:#4da3ff;
-}
-
-/* HERO */
-.hero{
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-background:
-radial-gradient(circle at 30% 30%, rgba(0,120,255,0.2), transparent 60%),
-radial-gradient(circle at 70% 70%, rgba(0,200,255,0.1), transparent 60%);
-}
-
-.hero-text h1{
-font-size:60px;
-margin-bottom:20px;
-}
-
-.hero-text p{
-color:#bbb;
-font-size:18px;
-margin-bottom:30px;
-}
-
-.btn{
-padding:12px 28px;
-border:1px solid #4da3ff;
-color:white;
-text-decoration:none;
-transition:0.3s;
-display:inline-block;
-}
-
-.btn:hover{
-background:#4da3ff;
-}
-
-/* SECTION */
-.section{
-max-width:1200px;
-margin:auto;
-padding:100px 20px;
-text-align:center;
-}
-
-.section h2{
-font-size:36px;
-margin-bottom:40px;
-letter-spacing:2px;
-}
-
-/* PRODUCTS */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-}
-
-.card{
-background:#0e1118;
-padding:30px;
-border-radius:15px;
-border:1px solid rgba(255,255,255,0.05);
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-10px);
-border-color:#4da3ff;
-}
-
-/* ABOUT */
-.dark{
-background:#07080d;
-}
-
-.about-text{
-max-width:700px;
-margin:auto;
-color:#bbb;
-line-height:1.8;
-font-size:16px;
-}
-
-/* FOOTER */
-footer{
-padding:40px;
-text-align:center;
-border-top:1px solid rgba(255,255,255,0.05);
-color:#666;
-}
-
-.hidden{
-opacity:0;
-transform:translateY(40px);
-transition:all 0.8s ease;
-}
-
-.show{
-opacity:1;
-transform:translateY(0);
-}
+form { max-width: 600px; margin: 30px auto; display: flex; flex-direction: column; }
+input, textarea { padding: 15px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; }
+button { padding: 15px; background: #333; color: #fff; border: none; cursor: pointer; border-radius: 5px; }
+button:hover { background: var(--primary-color); }
+footer { text-align: center; padding: 40px; background: #111; color: #777; }
