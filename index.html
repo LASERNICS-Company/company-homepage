@@ -3,142 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Lasernics | Femtosecond Laser Systems</title>
+<title>Lasernics | Industrial Femtosecond Laser Systems</title>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background: radial-gradient(circle at 20% 20%, #0b1220, #05070d 60%);
-  color: #d7e1ff;
-  font-family: 'Orbitron', sans-serif;
-  overflow-x: hidden;
-}
-
-/* animated grid background */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background:
-    linear-gradient(rgba(0,255,255,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,255,255,0.05) 1px, transparent 1px);
-  background-size: 60px 60px;
-  transform: perspective(800px) rotateX(60deg);
-  transform-origin: center;
-  opacity: 0.3;
-  pointer-events: none;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 25px 60px;
-  border-bottom: 1px solid rgba(0,255,255,0.15);
-}
-
-.logo {
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  color: #00f5ff;
-}
-
-nav a {
-  color: #cfe3ff;
-  text-decoration: none;
-  margin-left: 25px;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-nav a:hover {
-  color: #00f5ff;
-}
-
-.hero {
-  height: 85vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 20px;
-}
-
-.hero h1 {
-  font-size: 48px;
-  color: #00f5ff;
-  letter-spacing: 3px;
-  text-shadow: 0 0 20px rgba(0,245,255,0.4);
-}
-
-.hero p {
-  margin-top: 20px;
-  max-width: 700px;
-  line-height: 1.6;
-  color: #b8c7ff;
-}
-
-.btn {
-  margin-top: 30px;
-  padding: 12px 28px;
-  border: 1px solid #00f5ff;
-  color: #00f5ff;
-  background: transparent;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #00f5ff;
-  color: #05070d;
-  box-shadow: 0 0 25px #00f5ff;
-}
-
-.section {
-  padding: 80px 60px;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-}
-
-.card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(0,255,255,0.15);
-  padding: 25px;
-  backdrop-filter: blur(10px);
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  border-color: #00f5ff;
-}
-
-.card h3 {
-  color: #00f5ff;
-  margin-bottom: 10px;
-}
-
-footer {
-  text-align: center;
-  padding: 40px;
-  border-top: 1px solid rgba(0,255,255,0.15);
-  font-size: 12px;
-  color: #7f90b5;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -153,49 +20,52 @@ footer {
 </header>
 
 <section class="hero">
-  <h1>FEMTOSECOND LASER SYSTEMS</h1>
+  <h1>INDUSTRIAL FEMTOSECOND LASER SYSTEMS</h1>
   <p>
-    Precision fiber-based ultrafast laser technology for semiconductor, micro-machining,
-    and advanced industrial applications.
+    Lasernics designs and manufactures ultrafast fiber laser systems
+    for semiconductor manufacturing, medical precision processing,
+    and advanced photonics applications.
   </p>
-  <button class="btn">Explore Technology</button>
+
+  <button class="btn" onclick="scrollToSection('tech')">
+    Explore Technology
+  </button>
 </section>
 
 <section class="section" id="about">
-  <h2 style="color:#00f5ff;margin-bottom:20px;">ABOUT</h2>
-  <p style="max-width:800px;color:#b8c7ff;line-height:1.7;">
-    :contentReference[oaicite:0]{index=0} develops high-end
-    femtosecond fiber laser systems optimized for ultra-precision processing,
-    semiconductor patterning, and micro-scale industrial fabrication.
+  <h2>ABOUT</h2>
+  <p>
+    Lasernics is a laser system manufacturer specializing in femtosecond
+    fiber laser platforms for high-precision industrial and medical applications.
   </p>
 </section>
 
 <section class="section" id="tech">
-  <h2 style="color:#00f5ff;margin-bottom:20px;">CORE TECHNOLOGIES</h2>
+  <h2>CORE TECHNOLOGIES</h2>
 
   <div class="cards">
     <div class="card">
-      <h3>Femtosecond Pulse</h3>
-      <p>Ultrashort pulse duration enabling cold ablation with minimal heat affected zone.</p>
+      <h3>Femtosecond Pulse Control</h3>
+      <p>Ultra-short pulse generation for non-thermal precision processing.</p>
     </div>
 
     <div class="card">
-      <h3>Fiber Laser Architecture</h3>
-      <p>High stability, compact design, and industrial-grade reliability.</p>
+      <h3>Fiber Laser Platform</h3>
+      <p>Stable, scalable architecture for industrial OEM systems.</p>
     </div>
 
     <div class="card">
-      <h3>Precision Micromachining</h3>
-      <p>Sub-micron accuracy for semiconductor and advanced material processing.</p>
+      <h3>Medical & Semiconductor Use</h3>
+      <p>Optimized for micromachining, imaging, and surgical precision systems.</p>
     </div>
   </div>
 </section>
 
 <section class="section" id="contact">
-  <h2 style="color:#00f5ff;margin-bottom:20px;">CONTACT</h2>
-  <p style="color:#b8c7ff;">
-    Email: contact@lasernics.com<br/>
-    Location: Korea
+  <h2>CONTACT</h2>
+  <p>
+    contact@lasernics.com<br/>
+    Republic of Korea
   </p>
 </section>
 
@@ -203,5 +73,6 @@ footer {
   © 2026 LASERNICS. All rights reserved.
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
