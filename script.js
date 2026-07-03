@@ -1,69 +1,71 @@
-const canvas = document.getElementById("wafer");
+const canvas = document.getElementById("chip");
 const ctx = canvas.getContext("2d");
 
-// resize safe
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resize();
-window.addEventListener("resize", resize);
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-// simple wafer grid
 const grid = 50;
-let scanY = 0;
-const marks = [];
 
-function drawGrid() {
-  ctx.strokeStyle = "rgba(255,255,255,0.03)";
+// IC chip blocks (반도체 느낌 구조)
+const blocks = [];
+for(let i=0;i<200;i++){
+  blocks.push({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    w: Math.random()*40+10,
+    h: Math.random()*40+10
+  });
+}
 
-  for (let x = 0; x < canvas.width; x += grid) {
-    for (let y = 0; y < canvas.height; y += grid) {
-      ctx.strokeRect(x, y, grid, grid);
-    }
+// laser path
+let laserX = 0;
+let laserY = 0;
+
+function drawChip(){
+  ctx.fillStyle = "rgba(255,255,255,0.03)";
+
+  for(let i=0;i<blocks.length;i++){
+    const b = blocks[i];
+    ctx.fillRect(b.x,b.y,b.w,b.h);
   }
 }
 
-function drawMarks() {
-  ctx.fillStyle = "rgba(0,180,255,0.7)";
-  for (let i = 0; i < marks.length; i++) {
-    ctx.fillRect(marks[i].x, marks[i].y, 2, 2);
-  }
-}
+function animate(){
 
-function animate() {
-  // background fade
-  ctx.fillStyle = "rgba(5,7,11,0.25)";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  // fade (잔상 = 웨이퍼 느낌)
+  ctx.fillStyle = "rgba(5,6,10,0.25)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
 
-  drawGrid();
+  drawChip();
 
-  // scan line
-  scanY += 0.7;
-  if (scanY > canvas.height) scanY = 0;
+  // 🔥 레이저 움직임 (핵심)
+  laserX += 3;
+  laserY += Math.sin(laserX*0.01)*2;
 
-  ctx.fillStyle = "rgba(0,180,255,0.08)";
-  ctx.fillRect(0, scanY, canvas.width, 2);
-
-  // add marks slowly
-  if (Math.random() > 0.6) {
-    marks.push({
-      x: Math.floor(Math.random() * canvas.width / grid) * grid,
-      y: scanY
-    });
+  if(laserX > canvas.width){
+    laserX = 0;
   }
 
-  // memory limit
-  if (marks.length > 800) marks.splice(0, 100);
+  // laser beam
+  ctx.strokeStyle = "rgba(0,200,255,0.8)";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(laserX, 0);
+  ctx.lineTo(laserX, canvas.height);
+  ctx.stroke();
 
-  drawMarks();
+  // laser impact (패턴 생성)
+  for(let i=0;i<3;i++){
+    ctx.fillStyle = "rgba(0,200,255,0.9)";
+    ctx.fillRect(
+      laserX + Math.random()*10,
+      Math.random()*canvas.height,
+      2,
+      2
+    );
+  }
 
   requestAnimationFrame(animate);
 }
 
-// IMPORTANT: start after safety check
-if (canvas && ctx) {
-  animate();
-} else {
-  console.error("Canvas not found or context error");
-}
+animate();
