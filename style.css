@@ -2,22 +2,30 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 body {
-  background: #03060c;
+  background: #05070b;
   color: #fff;
   overflow-x: hidden;
 }
 
-/* BACKGROUND */
-#bg {
+/* subtle wafer background */
+.bg {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(0,180,255,0.08), transparent 40%),
+    radial-gradient(circle at 70% 80%, rgba(0,120,255,0.06), transparent 45%),
+    linear-gradient(#05070b, #05070b);
+  z-index: -2;
+}
+
+/* scanning line */
+#scan {
+  position: fixed;
+  inset: 0;
   z-index: -1;
 }
 
@@ -27,122 +35,136 @@ header {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 20px 60px;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(10px);
+  padding: 24px 60px;
+  backdrop-filter: blur(12px);
+  background: rgba(5,7,11,0.6);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #00e5ff;
-  font-weight: bold;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
+  font-weight: 500;
+  color: #d7e7ff;
 }
 
-/* semiconductor dot */
-.dot {
-  width: 10px;
-  height: 10px;
-  background: #00e5ff;
-  border-radius: 50%;
-  box-shadow: 0 0 15px #00e5ff;
-}
-
-/* NAV */
 nav a {
-  color: #fff;
-  margin-left: 20px;
-  opacity: 0.6;
+  color: #aaa;
+  margin-left: 24px;
   text-decoration: none;
+  font-size: 14px;
 }
-nav a:hover { opacity: 1; }
+
+nav a:hover {
+  color: #fff;
+}
 
 /* HERO */
 .hero {
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  padding: 0 60px;
 }
 
 .hero h1 {
-  font-size: 3.8rem;
-  background: linear-gradient(90deg,#00e5ff,#0055ff);
-  -webkit-background-clip: text;
-  color: transparent;
+  font-size: 3.2rem;
+  font-weight: 400;
+  max-width: 800px;
+  line-height: 1.2;
+  color: #eaf2ff;
 }
 
 .hero p {
-  opacity: 0.7;
-  margin: 15px 0;
-}
-
-.btn {
-  padding: 12px 28px;
-  background: #00e5ff;
-  color: black;
-  border-radius: 25px;
-  font-weight: bold;
-  text-decoration: none;
+  margin-top: 20px;
+  color: #9aa7b5;
+  max-width: 600px;
 }
 
 /* SECTIONS */
 .section {
-  padding: 120px 80px;
+  padding: 120px 60px;
 }
 
-.dark {
-  background: rgba(255,255,255,0.03);
+.light {
+  background: rgba(255,255,255,0.02);
 }
 
+.container {
+  max-width: 1100px;
+}
+
+/* TITLES */
 h2 {
-  font-size: 2.3rem;
-  margin-bottom: 30px;
+  font-weight: 400;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #eaf2ff;
 }
 
 /* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
 .card {
-  background: rgba(255,255,255,0.04);
-  padding: 25px;
-  border: 1px solid rgba(0,255,255,0.1);
-  border-radius: 12px;
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
 }
 
-.card:hover {
-  border-color: #00e5ff;
-  transform: translateY(-8px);
-  transition: 0.3s;
+.card h3 {
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #dfeaff;
 }
 
-/* FORM */
+.card p {
+  color: #8f9aad;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* stronger system cards */
+.strong {
+  border-color: rgba(0,140,255,0.2);
+}
+
+/* CONTACT */
+.contact-box {
+  max-width: 600px;
+}
+
 input, textarea {
   width: 100%;
-  margin: 10px 0;
-  padding: 12px;
-  background: #0a0f18;
-  border: 1px solid #222;
+  margin-top: 12px;
+  padding: 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
   color: white;
 }
 
 button {
-  padding: 12px;
-  background: #00e5ff;
+  margin-top: 12px;
+  padding: 14px;
+  background: #d7e7ff;
+  color: #000;
   border: none;
-  font-weight: bold;
+  cursor: pointer;
 }
 
 /* FOOTER */
 footer {
   text-align: center;
-  padding: 40px;
-  opacity: 0.4;
+  padding: 50px;
+  color: #666;
+  font-size: 12px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+  .hero { padding: 0 20px; }
+  header { padding: 20px; }
 }
