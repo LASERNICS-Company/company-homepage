@@ -1,27 +1,18 @@
-// Smooth scroll enhancement
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener("click", function(e){
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if(target){
-      target.scrollIntoView({
-        behavior:"smooth",
-        block:"start"
-      });
-    }
-  });
+// smooth reveal animation
+const cards = document.querySelectorAll('.card');
+
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.style.opacity = 1;
+entry.target.style.transform = "translateY(0)";
+}
+});
 });
 
-// Fade-in animation on scroll
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("show");
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll(".card, .feature, .hero-content").forEach(el=>{
-  el.classList.add("hidden");
-  observer.observe(el);
+cards.forEach(card=>{
+card.style.opacity = 0;
+card.style.transform = "translateY(30px)";
+card.style.transition = "0.6s";
+observer.observe(card);
 });
