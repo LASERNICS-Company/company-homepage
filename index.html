@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LASERNICS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:#050505;
+color:white;
+overflow-x:hidden;
+}
+
+header{
+position:fixed;
+top:0;
+width:100%;
+z-index:999;
+background:rgba(0,0,0,.7);
+backdrop-filter:blur(15px);
+}
+
+.nav{
+max-width:1400px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+}
+
+.logo{
+height:42px;
+}
+
+.menu{
+display:flex;
+gap:40px;
+}
+
+.menu a{
+color:white;
+text-decoration:none;
+font-weight:500;
+}
+
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:100px;
+}
+
+.hero-wrap{
+max-width:1400px;
+display:grid;
+grid-template-columns:1fr 1fr;
+align-items:center;
+gap:80px;
+}
+
+.hero h1{
+font-size:68px;
+line-height:1.1;
+font-weight:800;
+}
+
+.hero p{
+margin-top:25px;
+font-size:20px;
+color:#b0b0b0;
+line-height:1.8;
+}
+
+.cta{
+margin-top:40px;
+display:inline-block;
+padding:16px 35px;
+border-radius:50px;
+background:#1e6cff;
+text-decoration:none;
+color:white;
+font-weight:600;
+}
+
+.hero-img{
+width:100%;
+filter:drop-shadow(0 0 80px rgba(30,108,255,.4));
+}
+
+section{
+padding:120px 50px;
+}
+
+.container{
+max-width:1400px;
+margin:auto;
+}
+
+.section-title{
+font-size:50px;
+margin-bottom:60px;
+}
+
+.tech-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+}
+
+.card{
+background:#101010;
+padding:40px;
+border:1px solid #1d1d1d;
+border-radius:20px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+border-color:#1e6cff;
+}
+
+.card h3{
+margin-bottom:15px;
+}
+
+.products{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+}
+
+.product{
+background:#0f0f0f;
+border-radius:25px;
+overflow:hidden;
+border:1px solid #1d1d1d;
+}
+
+.product img{
+width:100%;
+display:block;
+background:white;
+}
+
+.product-content{
+padding:30px;
+}
+
+.product-content h3{
+font-size:28px;
+margin-bottom:15px;
+}
+
+.about{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:80px;
+align-items:center;
+}
+
+.about p{
+font-size:18px;
+line-height:2;
+color:#c0c0c0;
+}
+
+.contact{
+text-align:center;
+}
+
+.contact h2{
+margin-bottom:20px;
+}
+
+.contact p{
+font-size:18px;
+color:#b0b0b0;
+margin-bottom:10px;
+}
+
+footer{
+padding:40px;
+text-align:center;
+border-top:1px solid #1a1a1a;
+color:#888;
+}
+
+@media(max-width:900px){
+
+.hero-wrap,
+.about,
+.products,
+.tech-grid{
+grid-template-columns:1fr;
+}
+
+.hero{
+padding:40px;
+}
+
+.hero h1{
+font-size:42px;
+}
+
+.menu{
+display:none;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="nav">
+
+<img src="images/logo.png" class="logo">
+
+<div class="menu">
+<a href="#about">Company</a>
+<a href="#technology">Technology</a>
+<a href="#products">Products</a>
+<a href="#contact">Contact</a>
+</div>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<div class="hero-wrap">
+
+<div>
+
+<h1>
+Precision Laser
+Technology
+</h1>
+
+<p>
+Advanced femtosecond laser systems designed and manufactured by LASERNICS.
+From ultrafast laser sources to precision control electronics.
+</p>
+
+<a href="#products" class="cta">
+Explore Products
+</a>
+
+</div>
+
+<div>
+
+<img src="images/laser-main.png" class="hero-img">
+
+</div>
+
+</div>
+
+</section>
+
+<section id="technology">
+
+<div class="container">
+
+<h2 class="section-title">
+Core Technologies
+</h2>
+
+<div class="tech-grid">
+
+<div class="card">
+<h3>Femtosecond Laser</h3>
+<p>Ultrafast pulse generation for precision processing.</p>
+</div>
+
+<div class="card">
+<h3>Fiber Laser Design</h3>
+<p>In-house optical and electronic development.</p>
+</div>
+
+<div class="card">
+<h3>Industrial Integration</h3>
+<p>Compact architecture for OEM applications.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="products">
+
+<div class="container">
+
+<h2 class="section-title">
+Products
+</h2>
+
+<div class="products">
+
+<div class="product">
+
+<img src="images/laser-main.png">
+
+<div class="product-content">
+
+<h3>Femtosecond Laser System</h3>
+
+<p>
+Industrial-grade ultrafast laser platform.
+</p>
+
+</div>
+
+</div>
+
+<div class="product">
+
+<img src="images/ld-driver.png">
+
+<div class="product-content">
+
+<h3>LD Driver</h3>
+
+<p>
+Precision laser diode current and temperature controller.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="about">
+
+<div class="container">
+
+<div class="about">
+
+<div>
+
+<h2 class="section-title">
+About LASERNICS
+</h2>
+
+<p>
+LASERNICS is a KAIST spin-off company specializing in femtosecond laser technology.
+We develop advanced laser systems and precision control electronics for industrial,
+scientific and research applications.
+</p>
+
+</div>
+
+<div>
+
+<img src="images/logo.png" style="width:180px;">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<div class="container contact">
+
+<h2 class="section-title">
+Contact
+</h2>
+
+<p>www.lasernics.com</p>
+
+<p>sales@lasernics.com</p>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 LASERNICS
+
+</footer>
+
+</body>
+</html>
