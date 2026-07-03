@@ -5,9 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>LASERNICS</title>
+<title>LASERNICS | Precision Laser Technology</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -25,13 +25,26 @@ color:white;
 overflow-x:hidden;
 }
 
+body::before{
+content:'';
+position:fixed;
+top:-200px;
+left:-200px;
+width:700px;
+height:700px;
+background:radial-gradient(circle,rgba(30,108,255,.15),transparent 70%);
+pointer-events:none;
+z-index:-1;
+}
+
 header{
 position:fixed;
 top:0;
 width:100%;
 z-index:999;
-background:rgba(0,0,0,.7);
+background:rgba(0,0,0,.75);
 backdrop-filter:blur(15px);
+border-bottom:1px solid rgba(255,255,255,.05);
 }
 
 .nav{
@@ -43,68 +56,109 @@ align-items:center;
 padding:20px 40px;
 }
 
+.logo-wrap{
+display:flex;
+align-items:center;
+gap:14px;
+}
+
 .logo{
-height:42px;
+height:48px;
+border-radius:10px;
+}
+
+.logo-text{
+display:flex;
+flex-direction:column;
+}
+
+.logo-text h2{
+font-size:24px;
+font-weight:800;
+letter-spacing:2px;
+line-height:1;
+}
+
+.logo-text span{
+font-size:11px;
+letter-spacing:2px;
+color:#4d8dff;
+margin-top:4px;
 }
 
 .menu{
 display:flex;
-gap:40px;
+gap:35px;
 }
 
 .menu a{
-color:white;
 text-decoration:none;
+color:white;
 font-weight:500;
+transition:.3s;
+}
+
+.menu a:hover{
+color:#4d8dff;
 }
 
 .hero{
-height:100vh;
+min-height:100vh;
 display:flex;
 align-items:center;
-justify-content:center;
-padding:100px;
+padding:100px 60px;
 }
 
 .hero-wrap{
 max-width:1400px;
+margin:auto;
 display:grid;
 grid-template-columns:1fr 1fr;
-align-items:center;
 gap:80px;
+align-items:center;
 }
 
 .hero h1{
-font-size:68px;
-line-height:1.1;
+font-size:88px;
 font-weight:800;
+line-height:.95;
+letter-spacing:-3px;
+margin-bottom:25px;
 }
 
 .hero p{
-margin-top:25px;
 font-size:20px;
-color:#b0b0b0;
 line-height:1.8;
+color:#b0b0b0;
 }
 
 .cta{
-margin-top:40px;
 display:inline-block;
-padding:16px 35px;
+margin-top:40px;
+padding:18px 40px;
 border-radius:50px;
 background:#1e6cff;
 text-decoration:none;
 color:white;
-font-weight:600;
+font-weight:700;
+box-shadow:0 0 35px rgba(30,108,255,.45);
+transition:.3s;
+}
+
+.cta:hover{
+transform:translateY(-3px);
 }
 
 .hero-img{
 width:100%;
-filter:drop-shadow(0 0 80px rgba(30,108,255,.4));
+filter:
+drop-shadow(0 0 30px rgba(30,108,255,.4))
+drop-shadow(0 0 60px rgba(30,108,255,.3))
+drop-shadow(0 0 120px rgba(30,108,255,.2));
 }
 
 section{
-padding:120px 50px;
+padding:120px 60px;
 }
 
 .container{
@@ -113,7 +167,7 @@ margin:auto;
 }
 
 .section-title{
-font-size:50px;
+font-size:52px;
 margin-bottom:60px;
 }
 
@@ -124,33 +178,45 @@ gap:30px;
 }
 
 .card{
-background:#101010;
+background:#111;
+border:1px solid #222;
 padding:40px;
-border:1px solid #1d1d1d;
 border-radius:20px;
 transition:.3s;
 }
 
 .card:hover{
-transform:translateY(-10px);
+transform:translateY(-8px);
 border-color:#1e6cff;
 }
 
 .card h3{
 margin-bottom:15px;
+font-size:24px;
+}
+
+.card p{
+color:#bbb;
+line-height:1.8;
 }
 
 .products{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:50px;
+gap:40px;
 }
 
 .product{
 background:#0f0f0f;
+border:1px solid #222;
 border-radius:25px;
 overflow:hidden;
-border:1px solid #1d1d1d;
+transition:.3s;
+}
+
+.product:hover{
+transform:translateY(-8px);
+border-color:#1e6cff;
 }
 
 .product img{
@@ -164,8 +230,13 @@ padding:30px;
 }
 
 .product-content h3{
-font-size:28px;
+font-size:30px;
 margin-bottom:15px;
+}
+
+.product-content p{
+color:#bbb;
+line-height:1.8;
 }
 
 .about{
@@ -185,38 +256,38 @@ color:#c0c0c0;
 text-align:center;
 }
 
-.contact h2{
-margin-bottom:20px;
-}
-
 .contact p{
 font-size:18px;
-color:#b0b0b0;
-margin-bottom:10px;
+margin-top:15px;
+color:#bbb;
 }
 
 footer{
 padding:40px;
 text-align:center;
 border-top:1px solid #1a1a1a;
-color:#888;
+color:#777;
 }
 
 @media(max-width:900px){
 
 .hero-wrap,
-.about,
 .products,
+.about,
 .tech-grid{
 grid-template-columns:1fr;
 }
 
 .hero{
-padding:40px;
+padding:120px 30px 80px;
 }
 
 .hero h1{
-font-size:42px;
+font-size:54px;
+}
+
+.section-title{
+font-size:38px;
 }
 
 .menu{
@@ -226,6 +297,7 @@ display:none;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -234,12 +306,21 @@ display:none;
 
 <div class="nav">
 
+<div class="logo-wrap">
+
 <img src="images/logo.png" class="logo">
 
+<div class="logo-text">
+<h2>LASERNICS</h2>
+<span>FEMTOSECOND LASER TECHNOLOGY</span>
+</div>
+
+</div>
+
 <div class="menu">
-<a href="#about">Company</a>
 <a href="#technology">Technology</a>
 <a href="#products">Products</a>
+<a href="#about">Company</a>
 <a href="#contact">Contact</a>
 </div>
 
@@ -254,13 +335,14 @@ display:none;
 <div>
 
 <h1>
-Precision Laser
+Precision<br>
+Laser<br>
 Technology
 </h1>
 
 <p>
-Advanced femtosecond laser systems designed and manufactured by LASERNICS.
-From ultrafast laser sources to precision control electronics.
+Advanced Femtosecond Laser Systems<br>
+Designed & Manufactured in Korea
 </p>
 
 <a href="#products" class="cta">
@@ -291,17 +373,23 @@ Core Technologies
 
 <div class="card">
 <h3>Femtosecond Laser</h3>
-<p>Ultrafast pulse generation for precision processing.</p>
+<p>
+Ultrafast pulse generation for precision material processing.
+</p>
 </div>
 
 <div class="card">
 <h3>Fiber Laser Design</h3>
-<p>In-house optical and electronic development.</p>
+<p>
+Complete optical and electronic design developed in-house.
+</p>
 </div>
 
 <div class="card">
 <h3>Industrial Integration</h3>
-<p>Compact architecture for OEM applications.</p>
+<p>
+Compact architecture optimized for OEM and industrial systems.
+</p>
 </div>
 
 </div>
@@ -329,7 +417,7 @@ Products
 <h3>Femtosecond Laser System</h3>
 
 <p>
-Industrial-grade ultrafast laser platform.
+Industrial-grade ultrafast laser platform for advanced applications.
 </p>
 
 </div>
@@ -371,16 +459,15 @@ About LASERNICS
 </h2>
 
 <p>
-LASERNICS is a KAIST spin-off company specializing in femtosecond laser technology.
-We develop advanced laser systems and precision control electronics for industrial,
-scientific and research applications.
+LASERNICS develops advanced femtosecond laser systems and precision control electronics.
+Our technologies are designed for industrial, scientific and research applications requiring extreme stability and performance.
 </p>
 
 </div>
 
 <div>
 
-<img src="images/logo.png" style="width:180px;">
+<img src="images/logo.png" style="width:220px;">
 
 </div>
 
@@ -408,7 +495,7 @@ Contact
 
 <footer>
 
-© 2026 LASERNICS
+© 2026 LASERNICS. All Rights Reserved.
 
 </footer>
 
