@@ -3,88 +3,102 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LASERTECH | Precision Manufacturing</title>
+  <title>LASERNICS | Laser Systems Engineering</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
 
 <body>
 
-<header class="header">
-  <div class="logo">LASER<span>TECH</span></div>
+<div id="cursor"></div>
+
+<header>
+  <div class="logo">LASERNICS</div>
   <nav>
-    <a href="#about">회사소개</a>
-    <a href="#tech">기술</a>
-    <a href="#products">제품</a>
-    <a href="#contact">문의</a>
+    <a href="#about">ABOUT</a>
+    <a href="#tech">TECH</a>
+    <a href="#products">SYSTEMS</a>
+    <a href="#contact">CONTACT</a>
   </nav>
 </header>
 
+<!-- HERO -->
 <section class="hero">
+  <canvas id="bg"></canvas>
+
   <div class="hero-content">
-    <h1>Precision Laser Manufacturing</h1>
-    <p>초정밀 레이저 가공으로 산업의 기준을 새롭게 정의합니다.</p>
-    <a href="#contact" class="btn">견적 문의</a>
+    <h1>We Build Laser Systems</h1>
+    <p>High-power precision laser engineering for next-generation industry</p>
+    <a href="#products" class="btn">Explore Systems</a>
   </div>
 </section>
 
+<!-- ABOUT -->
 <section id="about" class="section">
-  <h2>회사 소개</h2>
+  <h2>ABOUT LASERNICS</h2>
   <p>
-    우리는 고정밀 레이저 커팅, 마킹, 미세 가공 기술을 기반으로
-    산업용 부품 제조 솔루션을 제공합니다.
+    LASERNICS는 산업용 고출력 레이저 시스템을 설계·제조하는 기술 기업입니다.  
+    정밀 광학, 빔 제어, 고출력 안정화 기술을 기반으로 차세대 레이저 솔루션을 제공합니다.
   </p>
 </section>
 
+<!-- TECH -->
 <section id="tech" class="section dark">
-  <h2>핵심 기술</h2>
+  <h2>CORE TECHNOLOGY</h2>
+
   <div class="grid">
     <div class="card">
-      <h3>Ultra Precision</h3>
-      <p>±0.01mm 초정밀 가공</p>
+      <h3>Fiber Laser Engine</h3>
+      <p>고효율 광섬유 기반 레이저 생성 시스템</p>
     </div>
+
     <div class="card">
-      <h3>High Speed</h3>
-      <p>고속 레이저 처리 시스템</p>
+      <h3>Beam Control AI</h3>
+      <p>실시간 빔 안정화 및 자동 보정 알고리즘</p>
     </div>
+
     <div class="card">
-      <h3>Material Flexibility</h3>
-      <p>알루미늄 / SUS / 티타늄 대응</p>
+      <h3>Thermal Stability</h3>
+      <p>고출력 환경에서도 안정적인 출력 유지</p>
     </div>
   </div>
 </section>
 
+<!-- PRODUCTS -->
 <section id="products" class="section">
-  <h2>주요 제품</h2>
+  <h2>LASER SYSTEMS</h2>
+
   <div class="grid">
-    <div class="card">
-      <h3>정밀 부품 가공</h3>
-      <p>산업용 고정밀 부품 제작</p>
+    <div class="card glow">
+      <h3>LSX-2000</h3>
+      <p>Industrial Cutting Laser System</p>
     </div>
-    <div class="card">
-      <h3>레이저 마킹</h3>
-      <p>로고 / 시리얼 / 산업표기</p>
+
+    <div class="card glow">
+      <h3>LSX-Micro</h3>
+      <p>Micro Precision Laser Module</p>
     </div>
-    <div class="card">
-      <h3>커스텀 제작</h3>
-      <p>도면 기반 1:1 제작 지원</p>
+
+    <div class="card glow">
+      <h3>LSX-Pro Beam</h3>
+      <p>High Power Beam Generator</p>
     </div>
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact" class="section dark">
-  <h2>문의</h2>
-  <p>프로젝트 상담 및 견적 요청</p>
+  <h2>CONTACT</h2>
 
   <form>
-    <input type="text" placeholder="이름" required>
-    <input type="email" placeholder="이메일" required>
-    <textarea placeholder="문의 내용"></textarea>
-    <button type="submit">보내기</button>
+    <input type="text" placeholder="Name" required>
+    <input type="email" placeholder="Email" required>
+    <textarea placeholder="Project Inquiry"></textarea>
+    <button>Send Request</button>
   </form>
 </section>
 
 <footer>
-  <p>© 2026 LASERTECH. All rights reserved.</p>
+  © 2026 LASERNICS. All rights reserved.
 </footer>
 
 <script src="script.js"></script>
