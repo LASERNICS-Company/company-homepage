@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Lasernics | Industrial Femtosecond Laser Systems</title>
+<title>Lasernics | Ultrafast Laser Systems</title>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -12,65 +12,104 @@
 
 <header>
   <div class="logo">LASERNICS</div>
+
   <nav>
-    <a href="#about">ABOUT</a>
-    <a href="#tech">TECH</a>
+    <a href="#products">PRODUCTS</a>
+    <a href="#applications">APPLICATIONS</a>
+    <a href="#technology">TECHNOLOGY</a>
     <a href="#contact">CONTACT</a>
   </nav>
 </header>
 
+<!-- HERO -->
 <section class="hero">
-  <h1>INDUSTRIAL FEMTOSECOND LASER SYSTEMS</h1>
-  <p>
-    Lasernics designs and manufactures ultrafast fiber laser systems
-    for semiconductor manufacturing, medical precision processing,
-    and advanced photonics applications.
-  </p>
+  <div class="hero-content">
+    <h1>Ultrafast Laser Systems for Precision Industries</h1>
+    <p>
+      Fiber-based femtosecond laser platforms engineered for semiconductor,
+      medical device manufacturing, and advanced photonics applications.
+    </p>
 
-  <button class="btn" onclick="scrollToSection('tech')">
-    Explore Technology
-  </button>
+    <button onclick="scrollToSection('products')">Explore Products</button>
+  </div>
 </section>
 
-<section class="section" id="about">
-  <h2>ABOUT</h2>
-  <p>
-    Lasernics is a laser system manufacturer specializing in femtosecond
-    fiber laser platforms for high-precision industrial and medical applications.
-  </p>
-</section>
+<!-- PRODUCTS -->
+<section class="section" id="products">
+  <h2>PRODUCT PORTFOLIO</h2>
 
-<section class="section" id="tech">
-  <h2>CORE TECHNOLOGIES</h2>
-
-  <div class="cards">
+  <div class="grid">
     <div class="card">
-      <h3>Femtosecond Pulse Control</h3>
-      <p>Ultra-short pulse generation for non-thermal precision processing.</p>
+      <h3>FemtoCore FX Series</h3>
+      <p>Industrial femtosecond fiber laser system for micro-machining.</p>
+
+      <div class="spec">
+        <span>Pulse Width</span><b>&lt; 300 fs</b>
+        <span>Wavelength</span><b>1030 nm</b>
+        <span>Power</span><b>20–100 W</b>
+      </div>
     </div>
 
     <div class="card">
-      <h3>Fiber Laser Platform</h3>
-      <p>Stable, scalable architecture for industrial OEM systems.</p>
+      <h3>MedPulse MX Series</h3>
+      <p>Medical-grade ultrafast laser platform for surgical precision systems.</p>
+
+      <div class="spec">
+        <span>Pulse Width</span><b>&lt; 400 fs</b>
+        <span>Wavelength</span><b>515 / 1030 nm</b>
+        <span>Power</span><b>5–50 W</b>
+      </div>
     </div>
 
     <div class="card">
-      <h3>Medical & Semiconductor Use</h3>
-      <p>Optimized for micromachining, imaging, and surgical precision systems.</p>
+      <h3>SemiconLite SX Series</h3>
+      <p>Optimized for semiconductor wafer processing and structuring.</p>
+
+      <div class="spec">
+        <span>Pulse Width</span><b>&lt; 250 fs</b>
+        <span>Wavelength</span><b>1030 nm</b>
+        <span>Power</span><b>10–200 W</b>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- APPLICATIONS -->
+<section class="section dark" id="applications">
+  <h2>APPLICATIONS</h2>
+
+  <div class="grid">
+    <div class="card2">Semiconductor Wafer Processing</div>
+    <div class="card2">Medical Device Manufacturing</div>
+    <div class="card2">Micro-Drilling & Structuring</div>
+    <div class="card2">Display & OLED Processing</div>
+  </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section class="section" id="technology">
+  <h2>CORE TECHNOLOGY</h2>
+
+  <p class="text">
+    Lasernics develops ultrafast fiber laser architectures based on
+    dispersion-managed femtosecond pulse shaping, ensuring stable
+    industrial-grade operation for continuous manufacturing environments.
+  </p>
+</section>
+
+<!-- CONTACT -->
 <section class="section" id="contact">
   <h2>CONTACT</h2>
-  <p>
-    contact@lasernics.com<br/>
-    Republic of Korea
+
+  <p class="text">
+    Lasernics Co., Ltd.<br/>
+    Republic of Korea<br/><br/>
+    contact@lasernics.com
   </p>
 </section>
 
 <footer>
-  © 2026 LASERNICS. All rights reserved.
+  © 2026 Lasernics. All rights reserved.
 </footer>
 
 <script src="script.js"></script>
