@@ -1,211 +1,219 @@
 /* ==========================
-LASERNICS WEBSITE SCRIPT
+   LASERNICS WEBSITE
 ========================== */
 
-/* Navbar Scroll Effect */
+document.addEventListener("DOMContentLoaded", () => {
 
-const navbar = document.querySelector('.navbar');
+    /* ==========================
+       NAVBAR SCROLL EFFECT
+    ========================== */
 
-window.addEventListener('scroll', () => {
+    const navbar = document.querySelector(".navbar");
 
-```
-if (window.scrollY > 40) {
+    window.addEventListener("scroll", () => {
 
-    navbar.style.background =
-        'rgba(7,11,20,0.92)';
+        if (window.scrollY > 50) {
 
-    navbar.style.backdropFilter =
-        'blur(18px)';
+            navbar.style.background =
+                "rgba(7,11,20,0.92)";
 
-} else {
+            navbar.style.backdropFilter =
+                "blur(18px)";
 
-    navbar.style.background =
-        'transparent';
+            navbar.style.borderBottom =
+                "1px solid rgba(255,255,255,.08)";
 
-}
-```
+        } else {
+
+            navbar.style.background =
+                "transparent";
+
+            navbar.style.borderBottom =
+                "1px solid rgba(255,255,255,.04)";
+        }
+
+    });
+
+    /* ==========================
+       SCROLL REVEAL
+    ========================== */
+
+    const revealElements = document.querySelectorAll(
+        ".product-card, .industry-card, .stat, .trusted-grid span"
+    );
+
+    revealElements.forEach(el => {
+        el.classList.add("reveal");
+    });
+
+    const observer = new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("active");
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.15
+        }
+    );
+
+    revealElements.forEach(el => {
+        observer.observe(el);
+    });
+
+    /* ==========================
+       PRODUCT CARD GLOW
+    ========================== */
+
+    document.querySelectorAll(".product-card")
+        .forEach(card => {
+
+            card.addEventListener("mousemove", e => {
+
+                const rect =
+                    card.getBoundingClientRect();
+
+                const x =
+                    e.clientX - rect.left;
+
+                const y =
+                    e.clientY - rect.top;
+
+                card.style.background =
+                    `radial-gradient(
+                    circle at ${x}px ${y}px,
+                    rgba(47,107,255,.20),
+                    rgba(255,255,255,.03) 55%
+                    )`;
+
+            });
+
+            card.addEventListener("mouseleave", () => {
+
+                card.style.background =
+                    "rgba(255,255,255,.03)";
+
+            });
+
+        });
+
+    /* ==========================
+       HERO PARALLAX
+    ========================== */
+
+    const heroVisual =
+        document.querySelector(".hero-visual");
+
+    if (heroVisual) {
+
+        document.addEventListener(
+            "mousemove",
+            e => {
+
+                const x =
+                    (e.clientX / window.innerWidth - 0.5) * 20;
+
+                const y =
+                    (e.clientY / window.innerHeight - 0.5) * 20;
+
+                heroVisual.style.transform =
+                    `translate(${x}px,${y}px)`;
+
+            }
+        );
+
+    }
+
+    /* ==========================
+       SMOOTH SCROLL
+    ========================== */
+
+    document.querySelectorAll(
+        'a[href^="#"]'
+    ).forEach(anchor => {
+
+        anchor.addEventListener(
+            "click",
+            function (e) {
+
+                e.preventDefault();
+
+                const target =
+                    document.querySelector(
+                        this.getAttribute("href")
+                    );
+
+                if (target) {
+
+                    target.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                }
+
+            }
+        );
+
+    });
+
+    /* ==========================
+       HERO RINGS ANIMATION
+    ========================== */
+
+    const ring1 =
+        document.querySelector(".ring1");
+
+    const ring2 =
+        document.querySelector(".ring2");
+
+    const ring3 =
+        document.querySelector(".ring3");
+
+    let angle = 0;
+
+    function animateRings() {
+
+        angle += 0.15;
+
+        if (ring1)
+            ring1.style.transform =
+                `translate(-50%,-50%) rotate(${angle}deg)`;
+
+        if (ring2)
+            ring2.style.transform =
+                `translate(-50%,-50%) rotate(${-angle * 0.7}deg)`;
+
+        if (ring3)
+            ring3.style.transform =
+                `translate(-50%,-50%) rotate(${angle * 0.4}deg)`;
+
+        requestAnimationFrame(
+            animateRings
+        );
+    }
+
+    animateRings();
 
 });
 
-/* Scroll Reveal Animation */
-
-const observer = new IntersectionObserver(
-
-(entries) => {
-
-entries.forEach(entry => {
-
-if(entry.isIntersecting){
-
-entry.target.classList.add('show');
-
-}
-
-});
-
-},
-
-{
-threshold:0.15
-}
-
-);
-
-document
-.querySelectorAll(
-'.industry-card,.product-card,.news-card,.stat'
-)
-.forEach(el => {
-
-el.classList.add('hidden');
-
-observer.observe(el);
-
-});
-
-/* Hero Parallax */
-
-const heroGlow =
-document.querySelector('.hero-glow');
-
-window.addEventListener(
-'mousemove',
-(e)=>{
-
-const x =
-(e.clientX / window.innerWidth - 0.5) * 50;
-
-const y =
-(e.clientY / window.innerHeight - 0.5) * 50;
-
-heroGlow.style.transform =
-`translate(${x}px, ${y}px)`;
-
-}
-);
-
-/* Product Hover Glow */
-
-document
-.querySelectorAll('.product-card')
-.forEach(card=>{
-
-card.addEventListener(
-'mousemove',
-(e)=>{
-
-const rect =
-card.getBoundingClientRect();
-
-const x =
-e.clientX - rect.left;
-
-const y =
-e.clientY - rect.top;
-
-card.style.background =
-
-`radial-gradient(
-circle at ${x}px ${y}px,
-rgba(47,107,255,.18),
-rgba(255,255,255,.03) 50%
-)`;
-
-});
-
-card.addEventListener(
-'mouseleave',
-()=>{
-
-card.style.background =
-'rgba(255,255,255,.03)';
-
-});
-
-});
-
-/* Counter Animation */
-
-const stats =
-document.querySelectorAll('.stat h3');
-
-const statsObserver =
-new IntersectionObserver(
-
-(entries)=>{
-
-entries.forEach(entry=>{
-
-if(!entry.isIntersecting)
-return;
-
-const el =
-entry.target;
-
-const value =
-el.innerText;
-
-if(
-value.includes('fs')
-||
-value.includes('W')
-){
-return;
-}
-
-});
-
-}
-
-);
-
-stats.forEach(el=>{
-
-statsObserver.observe(el);
-
-});
-
-/* Smooth Navigation */
-
-document
-.querySelectorAll('nav a')
-.forEach(link=>{
-
-link.addEventListener(
-'click',
-function(e){
-
-const href =
-this.getAttribute('href');
-
-if(
-href.startsWith('#')
-){
-
-e.preventDefault();
-
-document
-.querySelector(href)
-.scrollIntoView({
-
-behavior:'smooth'
-
-});
-
-}
-
-});
-
-});
-
-/* Reveal CSS Injection */
+/* ==========================
+   DYNAMIC CSS
+========================== */
 
 const style =
-document.createElement('style');
+document.createElement("style");
 
 style.innerHTML = `
 
-.hidden{
+.reveal{
 
 opacity:0;
 
@@ -213,11 +221,11 @@ transform:
 translateY(40px);
 
 transition:
-all .8s ease;
+all .9s ease;
 
 }
 
-.show{
+.reveal.active{
 
 opacity:1;
 
