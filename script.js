@@ -8,105 +8,75 @@ function resize(){
 resize();
 window.addEventListener("resize", resize);
 
-// =========================
-// CHIP BASE STRUCTURE
-// =========================
-const grid = 60;
+// ============================
+// CHIP LAYER STRUCTURE
+// ============================
+const lines = [];
 
-// =========================
-// LASER POSITION (CNC HEAD)
-// =========================
-let laser = {
-  x: 0,
-  y: 0
-};
+// 미세 회로 라인 생성
+for(let i=0;i<120;i++){
+  const startX = Math.random()*window.innerWidth;
+  const startY = Math.random()*window.innerHeight;
 
-// pattern storage (etched result)
-const pattern = [];
+  const length = Math.random()*200 + 80;
 
-function drawChipGrid(){
-  ctx.strokeStyle = "rgba(0,180,255,0.05)";
-
-  for(let x=0;x<canvas.width;x+=grid){
-    for(let y=0;y<canvas.height;y+=grid){
-      ctx.strokeRect(x,y,grid,grid);
-    }
-  }
-}
-
-// =========================
-// LASER MOVE PATH (FAB MODE)
-// =========================
-function updateLaser(){
-
-  // smooth movement (fabrication scan path)
-  laser.x += 2.5;
-
-  // slight vertical drift (wafer stage movement 느낌)
-  laser.y = canvas.height/2 + Math.sin(laser.x * 0.01) * 120;
-
-  if(laser.x > canvas.width){
-    laser.x = 0;
-    pattern.length = 0; // 새 웨이퍼 시작 느낌
-  }
-
-  // "가공된 결과" 저장
-  pattern.push({
-    x: laser.x,
-    y: laser.y
+  lines.push({
+    x: startX,
+    y: startY,
+    dx: Math.random() > 0.5 ? length : 0,
+    dy: Math.random() > 0.5 ? length : 0
   });
-
-  if(pattern.length > 3000){
-    pattern.shift();
-  }
 }
 
-// =========================
-// DRAW LASER BEAM
-// =========================
-function drawLaser(){
-  ctx.fillStyle = "rgba(0,200,255,0.15)";
-  ctx.beginPath();
-  ctx.arc(laser.x, laser.y, 6, 0, Math.PI*2);
-  ctx.fill();
+// ============================
+// DRAW CHIP BACKGROUND
+// ============================
+function drawChip(){
 
-  // beam tail (energy trail)
-  ctx.strokeStyle = "rgba(0,200,255,0.25)";
-  ctx.lineWidth = 2;
-
-  ctx.beginPath();
-  ctx.moveTo(laser.x - 30, laser.y);
-  ctx.lineTo(laser.x, laser.y);
-  ctx.stroke();
-}
-
-// =========================
-// DRAW ETCHED PATTERN
-// =========================
-function drawPattern(){
-  ctx.fillStyle = "rgba(0,180,255,0.6)";
-
-  for(let i=0;i<pattern.length;i++){
-    ctx.fillRect(pattern[i].x, pattern[i].y, 2, 2);
-  }
-}
-
-// =========================
-// LOOP
-// =========================
-function animate(){
-
-  // fade (wafer surface 유지)
-  ctx.fillStyle = "rgba(5,7,11,0.25)";
+  // base wafer tone
+  ctx.fillStyle = "#05070b";
   ctx.fillRect(0,0,canvas.width,canvas.height);
 
-  drawChipGrid();
+  for(let i=0;i<lines.length;i++){
 
-  updateLaser();
+    const l = lines[i];
 
-  drawPattern();
+    ctx.strokeStyle = "rgba(0,180,255,0.08)";
+    ctx.lineWidth = 1;
 
-  drawLaser();
+    ctx.beginPath();
+    ctx.moveTo(l.x, l.y);
+
+    // L-shaped or straight trace (IC 느낌 핵심)
+    ctx.lineTo(l.x + l.dx, l.y);
+    ctx.lineTo(l.x + l.dx, l.y + l.dy);
+
+    ctx.stroke();
+  }
+}
+
+// ============================
+// LIGHT NOISE (금속 반사 느낌)
+// ============================
+function glow(){
+  ctx.fillStyle = "rgba(0,180,255,0.02)";
+  for(let i=0;i<40;i++){
+    ctx.fillRect(
+      Math.random()*canvas.width,
+      Math.random()*canvas.height,
+      1,
+      1
+    );
+  }
+}
+
+// ============================
+// LOOP
+// ============================
+function animate(){
+
+  drawChip();
+  glow();
 
   requestAnimationFrame(animate);
 }
