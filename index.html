@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>LASERNICS | Precision Laser Technology</title>
+<title>LASERNICS | Precision Laser Solutions</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <style>
 
@@ -19,25 +23,40 @@ scroll-behavior:smooth;
 }
 
 body{
-font-family:Segoe UI,Arial,sans-serif;
-background:#050505;
+font-family:Arial, Helvetica, sans-serif;
+background:#040608;
 color:white;
 overflow-x:hidden;
-line-height:1.6;
 }
 
 body::before{
-content:"";
+content:'';
 position:fixed;
-top:0;
-right:0;
-width:700px;
-height:700px;
-background:radial-gradient(circle,
-rgba(59,130,246,.25),
+top:-200px;
+right:-200px;
+width:900px;
+height:900px;
+background:
+radial-gradient(circle,
+rgba(0,120,255,.18),
 transparent 70%);
 pointer-events:none;
-z-index:-1;
+z-index:-2;
+}
+
+body::after{
+content:'';
+position:fixed;
+bottom:-300px;
+left:-300px;
+width:1000px;
+height:1000px;
+background:
+radial-gradient(circle,
+rgba(0,120,255,.08),
+transparent 70%);
+pointer-events:none;
+z-index:-2;
 }
 
 header{
@@ -45,16 +64,16 @@ position:fixed;
 top:0;
 left:0;
 width:100%;
-background:rgba(5,5,5,.85);
-backdrop-filter:blur(12px);
-border-bottom:1px solid #222;
+background:rgba(4,6,8,.85);
+backdrop-filter:blur(15px);
+border-bottom:1px solid rgba(255,255,255,.08);
 z-index:1000;
 }
 
 .navbar{
 max-width:1400px;
 margin:auto;
-padding:15px 30px;
+padding:18px 30px;
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -63,22 +82,22 @@ align-items:center;
 .logo-box{
 display:flex;
 align-items:center;
-gap:15px;
+gap:14px;
 }
 
 .logo-box img{
-height:55px;
+height:52px;
 }
 
 .logo-text{
-font-size:28px;
+font-size:26px;
 font-weight:700;
 letter-spacing:3px;
 }
 
 .menu{
 display:flex;
-gap:30px;
+gap:35px;
 }
 
 .menu a{
@@ -97,43 +116,74 @@ color:#3b82f6;
 min-height:100vh;
 display:flex;
 align-items:center;
-justify-content:center;
-padding:120px 50px 80px;
+justify-content:space-between;
 max-width:1400px;
 margin:auto;
-gap:80px;
+padding:120px 40px 80px;
+gap:60px;
 }
 
 .hero-left{
 flex:1;
 }
 
+.hero-tag{
+display:inline-block;
+padding:10px 18px;
+border:1px solid rgba(59,130,246,.5);
+border-radius:999px;
+font-size:12px;
+letter-spacing:2px;
+color:#60a5fa;
+margin-bottom:30px;
+}
+
 .hero-left h1{
-font-size:78px;
-line-height:0.95;
+font-size:88px;
+line-height:.95;
 margin-bottom:25px;
 }
 
 .hero-left p{
 font-size:22px;
-color:#bfbfbf;
-margin-bottom:40px;
+color:#bdbdbd;
+line-height:1.8;
+max-width:650px;
 }
 
-.hero-btn{
-display:inline-block;
+.hero-buttons{
+margin-top:40px;
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.btn-primary{
 padding:16px 40px;
 background:#2563eb;
-border-radius:50px;
+border-radius:999px;
 text-decoration:none;
 color:white;
-font-weight:700;
+font-weight:bold;
 transition:.3s;
 }
 
-.hero-btn:hover{
+.btn-primary:hover{
 transform:translateY(-4px);
-box-shadow:0 0 30px rgba(37,99,235,.5);
+box-shadow:0 0 30px rgba(37,99,235,.45);
+}
+
+.btn-secondary{
+padding:16px 40px;
+border:1px solid rgba(255,255,255,.15);
+border-radius:999px;
+text-decoration:none;
+color:white;
+transition:.3s;
+}
+
+.btn-secondary:hover{
+background:rgba(255,255,255,.05);
 }
 
 .hero-right{
@@ -143,42 +193,80 @@ text-align:center;
 
 .hero-right img{
 width:100%;
-max-width:650px;
+max-width:700px;
+animation:float 5s ease-in-out infinite;
 filter:
-drop-shadow(0 0 20px rgba(37,99,235,.6))
-drop-shadow(0 0 80px rgba(37,99,235,.3));
+drop-shadow(0 0 20px rgba(0,120,255,.6))
+drop-shadow(0 0 70px rgba(0,120,255,.35));
+}
+
+@keyframes float{
+
+0%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+100%{transform:translateY(0);}
+
 }
 
 .section{
 max-width:1400px;
 margin:auto;
-padding:100px 30px;
+padding:120px 40px;
 }
 
 .section-title{
-font-size:48px;
+font-size:52px;
 text-align:center;
-margin-bottom:60px;
+margin-bottom:70px;
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+}
+
+.feature{
+background:#0b0f14;
+border:1px solid rgba(255,255,255,.08);
+border-radius:20px;
+padding:35px;
+transition:.3s;
+}
+
+.feature:hover{
+transform:translateY(-8px);
+border-color:#2563eb;
+}
+
+.feature h3{
+margin-bottom:15px;
+font-size:22px;
+}
+
+.feature p{
+color:#bdbdbd;
+line-height:1.8;
 }
 
 .products{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(450px,1fr));
+grid-template-columns:repeat(2,1fr);
 gap:40px;
 }
 
 .card{
-background:#0d0d0d;
-border:1px solid #222;
+background:#0b0f14;
 border-radius:25px;
 overflow:hidden;
+border:1px solid rgba(255,255,255,.08);
 transition:.35s;
 }
 
 .card:hover{
-transform:translateY(-12px);
+transform:translateY(-10px);
 border-color:#2563eb;
-box-shadow:0 0 40px rgba(37,99,235,.2);
+box-shadow:0 0 40px rgba(37,99,235,.15);
 }
 
 .card img{
@@ -196,7 +284,36 @@ margin-bottom:15px;
 }
 
 .card-content p{
-color:#bfbfbf;
+color:#bdbdbd;
+line-height:1.8;
+}
+.features-app{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+}
+
+.app-card{
+background:#0b0f14;
+border:1px solid rgba(255,255,255,.08);
+padding:35px;
+border-radius:20px;
+text-align:center;
+transition:.3s;
+}
+
+.app-card:hover{
+transform:translateY(-8px);
+border-color:#2563eb;
+}
+
+.app-card h3{
+font-size:24px;
+margin-bottom:15px;
+}
+
+.app-card p{
+color:#bdbdbd;
 }
 
 .about{
@@ -204,29 +321,8 @@ max-width:900px;
 margin:auto;
 text-align:center;
 font-size:20px;
-color:#bfbfbf;
 line-height:1.9;
-}
-
-.stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:30px;
-margin-top:70px;
-}
-
-.stat{
-background:#0d0d0d;
-border:1px solid #222;
-padding:35px;
-border-radius:20px;
-text-align:center;
-}
-
-.stat h3{
-font-size:42px;
-color:#3b82f6;
-margin-bottom:10px;
+color:#bdbdbd;
 }
 
 .contact{
@@ -241,14 +337,14 @@ text-decoration:none;
 }
 
 footer{
-margin-top:100px;
-padding:40px;
+padding:50px;
 text-align:center;
-border-top:1px solid #222;
-color:#777;
+border-top:1px solid rgba(255,255,255,.08);
+color:#888;
+margin-top:100px;
 }
 
-@media(max-width:900px){
+@media(max-width:1000px){
 
 .hero{
 flex-direction:column;
@@ -256,14 +352,18 @@ text-align:center;
 }
 
 .hero-left h1{
-font-size:52px;
+font-size:58px;
 }
 
-.products{
+.features{
 grid-template-columns:1fr;
 }
 
-.stats{
+.features-app{
+grid-template-columns:1fr;
+}
+
+.products{
 grid-template-columns:1fr;
 }
 
@@ -283,13 +383,14 @@ display:none;
 <div class="navbar">
 
 <div class="logo-box">
-<img src="images/logo.png" alt="LASERNICS">
+<img src="images/logo.png">
 <div class="logo-text">LASERNICS</div>
 </div>
 
 <div class="menu">
 <a href="#home">HOME</a>
 <a href="#products">PRODUCTS</a>
+<a href="#applications">APPLICATIONS</a>
 <a href="#about">ABOUT</a>
 <a href="#contact">CONTACT</a>
 </div>
@@ -302,6 +403,10 @@ display:none;
 
 <div class="hero-left">
 
+<div class="hero-tag">
+ADVANCED PHOTONICS SOLUTIONS
+</div>
+
 <h1>
 PRECISION<br>
 LASER<br>
@@ -309,25 +414,69 @@ TECHNOLOGY
 </h1>
 
 <p>
-Advanced Laser Systems & LD Driver Solutions<br>
-Designed and Manufactured in Korea
+Advanced Laser Systems and LD Driver Solutions
+for Industrial, Scientific and OEM Applications.
 </p>
 
-<a href="#products" class="hero-btn">
+<div class="hero-buttons">
+
+<a href="#products" class="btn-primary">
 VIEW PRODUCTS
+</a>
+
+<a href="#contact" class="btn-secondary">
+CONTACT US
 </a>
 
 </div>
 
+</div>
+
 <div class="hero-right">
-<img src="images/laser-main.png" alt="Laser System">
+
+<img src="images/laser-main.png">
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">
+Why LASERNICS
+</h2>
+
+<div class="features">
+
+<div class="feature">
+<h3>High Precision</h3>
+<p>Stable and accurate laser control technologies.</p>
+</div>
+
+<div class="feature">
+<h3>OEM Solutions</h3>
+<p>Custom development for integration projects.</p>
+</div>
+
+<div class="feature">
+<h3>Industrial Reliability</h3>
+<p>Designed for long-term industrial operation.</p>
+</div>
+
+<div class="feature">
+<h3>R&D Innovation</h3>
+<p>Continuous development of laser technologies.</p>
+</div>
+
 </div>
 
 </section>
 
 <section class="section" id="products">
 
-<h2 class="section-title">Products</h2>
+<h2 class="section-title">
+Products
+</h2>
 
 <div class="products">
 
@@ -341,8 +490,7 @@ VIEW PRODUCTS
 
 <p>
 High-performance laser platform designed for
-industrial, scientific and research applications.
-Built for precision, stability and reliability.
+research, industrial processing and OEM systems.
 </p>
 
 </div>
@@ -358,8 +506,8 @@ Built for precision, stability and reliability.
 <h3>LD Driver</h3>
 
 <p>
-Precision laser diode driver with advanced current
-control, monitoring and thermal management.
+Precision laser diode driver with advanced
+current control and monitoring functions.
 </p>
 
 </div>
@@ -370,36 +518,55 @@ control, monitoring and thermal management.
 
 </section>
 
+<section class="section" id="applications">
+
+<h2 class="section-title">
+Applications
+</h2>
+
+<div class="features-app">
+
+<div class="app-card">
+<h3>Semiconductor</h3>
+<p>Wafer processing and inspection.</p>
+</div>
+
+<div class="app-card">
+<h3>Research</h3>
+<p>Laboratory and university projects.</p>
+</div>
+
+<div class="app-card">
+<h3>Medical</h3>
+<p>Laser-based medical technologies.</p>
+</div>
+
+<div class="app-card">
+<h3>Industrial</h3>
+<p>Precision manufacturing solutions.</p>
+</div>
+
+</div>
+
+</section>
 <section class="section" id="about">
 
-<h2 class="section-title">About LASERNICS</h2>
+<h2 class="section-title">
+About LASERNICS
+</h2>
 
 <div class="about">
 
 LASERNICS develops advanced laser systems,
-laser diode drivers and custom photonics solutions.
+laser diode drivers and customized photonics solutions.
 
-Our mission is to provide reliable and precise laser
-technology for industrial, scientific and OEM applications.
+We focus on delivering reliable, high-performance
+laser technologies for industrial, scientific,
+research and OEM applications.
 
-</div>
-
-<div class="stats">
-
-<div class="stat">
-<h3>Laser</h3>
-<p>Technology</p>
-</div>
-
-<div class="stat">
-<h3>OEM</h3>
-<p>Solutions</p>
-</div>
-
-<div class="stat">
-<h3>R&D</h3>
-<p>Innovation</p>
-</div>
+Our commitment is to provide innovative,
+precise and dependable solutions that help
+customers achieve the highest level of performance.
 
 </div>
 
@@ -407,17 +574,39 @@ technology for industrial, scientific and OEM applications.
 
 <section class="section" id="contact">
 
-<h2 class="section-title">Contact</h2>
+<h2 class="section-title">
+Contact
+</h2>
 
 <div class="contact">
 
-<p>Website</p>
-<p><a href="https://www.lasernics.com">www.lasernics.com</a></p>
+<p>
+Website
+</p>
+
+<p>
+<a href="https://www.lasernics.com" target="_blank">
+www.lasernics.com
+</a>
+</p>
 
 <br>
 
-<p>Email</p>
-<p><a href="mailto:sales@lasernics.com">sales@lasernics.com</a></p>
+<p>
+Email
+</p>
+
+<p>
+<a href="mailto:sales@lasernics.com">
+sales@lasernics.com
+</a>
+</p>
+
+<br>
+
+<p>
+Precision Laser Technology
+</p>
 
 </div>
 
@@ -425,7 +614,17 @@ technology for industrial, scientific and OEM applications.
 
 <footer>
 
+<div style="font-size:22px;margin-bottom:15px;">
+LASERNICS
+</div>
+
+<div style="margin-bottom:10px;">
+Advanced Laser Systems & Photonics Solutions
+</div>
+
+<div>
 © 2026 LASERNICS. All Rights Reserved.
+</div>
 
 </footer>
 
