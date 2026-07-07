@@ -7,29 +7,40 @@ scroll-behavior:smooth;
 
 body{
 font-family:'Inter',sans-serif;
-background:#050505;
-color:#ffffff;
+background:#05070d;
+color:#fff;
 overflow-x:hidden;
 }
 
-/* ===================
-HEADER
-=================== */
+/* 배경 */
+
+body::before{
+content:'';
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 20%,rgba(0,120,255,.08),transparent 35%),
+radial-gradient(circle at 80% 60%,rgba(0,180,255,.05),transparent 40%);
+pointer-events:none;
+z-index:-1;
+}
+
+/* HEADER */
 
 header{
 position:fixed;
 top:0;
 left:0;
 width:100%;
-height:90px;
+height:85px;
 display:flex;
-justify-content:space-between;
 align-items:center;
+justify-content:space-between;
 padding:0 8%;
-background:rgba(5,5,5,.85);
+background:rgba(5,7,13,.85);
 backdrop-filter:blur(20px);
 border-bottom:1px solid rgba(255,255,255,.06);
-z-index:999;
+z-index:1000;
 }
 
 .logo{
@@ -48,7 +59,7 @@ object-fit:contain;
 
 nav{
 display:flex;
-gap:40px;
+gap:35px;
 }
 
 nav a{
@@ -59,12 +70,10 @@ transition:.3s;
 }
 
 nav a:hover{
-color:#ffffff;
+color:#fff;
 }
 
-/* ===================
-HERO
-=================== */
+/* HERO */
 
 .hero{
 min-height:100vh;
@@ -75,29 +84,29 @@ padding:140px 8%;
 gap:80px;
 }
 
-.hero-text{
+.hero-content{
 flex:1;
+max-width:650px;
 }
 
-.subtitle{
+.hero-label{
 font-size:.8rem;
 letter-spacing:3px;
-color:#7d8ea3;
+color:#6faeff;
 margin-bottom:25px;
 }
 
 .hero h1{
 font-size:6rem;
-line-height:0.95;
-font-weight:800;
+line-height:.95;
 margin-bottom:30px;
+font-weight:800;
 }
 
 .hero p{
 font-size:1.2rem;
 line-height:1.8;
-color:#b8b8b8;
-max-width:550px;
+color:#bdbdbd;
 margin-bottom:40px;
 }
 
@@ -111,156 +120,152 @@ justify-content:center;
 width:100%;
 max-width:850px;
 filter:
-drop-shadow(0 0 30px rgba(0,150,255,.18))
-drop-shadow(0 0 80px rgba(0,150,255,.08));
+drop-shadow(0 0 30px rgba(0,120,255,.25))
+drop-shadow(0 0 80px rgba(0,120,255,.12));
 }
 
-/* ===================
-BUTTON
-=================== */
+/* BUTTON */
 
 .btn{
 display:inline-block;
 padding:16px 34px;
+border:1px solid rgba(255,255,255,.15);
 border-radius:50px;
-text-decoration:none;
 color:#fff;
-border:1px solid rgba(255,255,255,.18);
+text-decoration:none;
 transition:.35s;
 }
 
 .btn:hover{
-background:#ffffff;
-color:#050505;
+background:#fff;
+color:#000;
 }
 
-/* ===================
-ABOUT
-=================== */
+/* SECTION */
 
-.about{
+.about,
+.products,
+.applications,
+.contact{
 padding:160px 8%;
-text-align:center;
 }
 
-.about-content{
+.section-tag{
+display:block;
+text-align:center;
+font-size:.8rem;
+letter-spacing:3px;
+color:#6faeff;
+margin-bottom:20px;
+}
+
+.about h2,
+.products h2,
+.applications h2,
+.contact h2{
+font-size:4rem;
+text-align:center;
+margin-bottom:35px;
+}
+
+.about-inner{
 max-width:900px;
 margin:auto;
-}
-
-.about h2{
-font-size:4rem;
-margin-bottom:30px;
+text-align:center;
 }
 
 .about p{
-font-size:1.2rem;
+font-size:1.15rem;
 line-height:2;
 color:#bdbdbd;
+margin-bottom:20px;
 }
 
-/* ===================
-PRODUCTS
-=================== */
+/* PRODUCTS */
 
-.products{
-padding:160px 8%;
-}
-
-.products h2{
-font-size:4rem;
+.product-showcase{
+max-width:1300px;
+margin:auto;
 text-align:center;
-margin-bottom:120px;
+padding:50px 0;
 }
 
-.product-card{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:80px;
-margin-bottom:140px;
-}
-
-.product-card.reverse{
-flex-direction:row-reverse;
-}
-
-.product-image{
-flex:1;
-}
-
-.product-image img{
+.product-showcase img{
 width:100%;
-max-width:700px;
+max-width:1000px;
+display:block;
+margin:auto;
 }
 
-.product-text{
-flex:1;
-}
-
-.product-text h3{
+.product-showcase h3{
 font-size:3rem;
-margin-bottom:25px;
+margin-top:40px;
+margin-bottom:20px;
 }
 
-.product-text p{
+.product-showcase p{
 font-size:1.15rem;
-line-height:1.9;
+line-height:2;
 color:#bdbdbd;
-max-width:500px;
+max-width:700px;
+margin:auto;
 }
 
-/* ===================
-APPLICATION
-=================== */
-
-.applications{
-padding:160px 8%;
+.divider{
+height:1px;
+background:rgba(255,255,255,.08);
+margin:100px 0;
 }
 
-.applications h2{
-font-size:4rem;
-text-align:center;
-margin-bottom:80px;
-}
+/* APPLICATION */
 
 .app-grid{
 display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:25px;
+grid-template-columns:repeat(2,1fr);
+gap:30px;
+margin-top:80px;
 }
 
-.app-box{
-height:260px;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:1.4rem;
-font-weight:600;
-border:1px solid rgba(255,255,255,.08);
-background:#0b0b0b;
+.app-card{
+background:#0b1018;
+border:1px solid rgba(255,255,255,.06);
+border-radius:20px;
+overflow:hidden;
 transition:.35s;
 }
 
-.app-box:hover{
-border-color:#3f8cff;
-transform:translateY(-5px);
+.app-card:hover{
+transform:translateY(-8px);
+border-color:rgba(0,140,255,.4);
 }
 
-/* ===================
-CONTACT
-=================== */
-
-.contact{
-padding:180px 8%;
-text-align:center;
+.app-image{
+height:240px;
+background:
+linear-gradient(
+135deg,
+#0b1726,
+#13263f
+);
 }
 
-.contact h2{
-font-size:4rem;
+.app-card h3{
+padding:25px 25px 10px;
+font-size:1.5rem;
+}
+
+.app-card p{
+padding:0 25px 30px;
+color:#bdbdbd;
+line-height:1.8;
+}
+
+/* CONTACT */
+
+.contact-inner{
 max-width:900px;
 margin:auto;
-margin-bottom:30px;
+text-align:center;
 }
 
 .contact p{
@@ -269,20 +274,31 @@ color:#bdbdbd;
 margin-bottom:40px;
 }
 
-/* ===================
-FOOTER
-=================== */
+/* FOOTER */
 
 footer{
-padding:40px;
-text-align:center;
-color:#777;
+padding:50px;
 border-top:1px solid rgba(255,255,255,.08);
+text-align:center;
 }
 
-/* ===================
-ANIMATION
-=================== */
+.footer-logo{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+margin-bottom:15px;
+}
+
+.footer-logo img{
+width:36px;
+}
+
+footer p{
+color:#888;
+}
+
+/* ANIMATION */
 
 .fade{
 opacity:0;
@@ -295,9 +311,7 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* ===================
-MOBILE
-=================== */
+/* MOBILE */
 
 @media(max-width:1000px){
 
@@ -308,15 +322,15 @@ display:none;
 .hero{
 flex-direction:column;
 text-align:center;
+padding-top:140px;
 }
 
 .hero h1{
-font-size:3.5rem;
+font-size:3.6rem;
 }
 
 .hero p{
-margin:auto;
-margin-bottom:30px;
+font-size:1rem;
 }
 
 .about h2,
@@ -326,14 +340,8 @@ margin-bottom:30px;
 font-size:2.5rem;
 }
 
-.product-card,
-.product-card.reverse{
-flex-direction:column;
-text-align:center;
-}
-
-.product-text p{
-margin:auto;
+.product-showcase h3{
+font-size:2rem;
 }
 
 .app-grid{
