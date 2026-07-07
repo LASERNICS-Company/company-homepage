@@ -1,42 +1,120 @@
+// HEADER EFFECT
+
 const header = document.getElementById("header");
 
 window.addEventListener("scroll", () => {
 
     if(window.scrollY > 50){
         header.classList.add("scrolled");
-    }
-    else{
+    }else{
         header.classList.remove("scrolled");
     }
 
 });
 
+
+// COUNTER
+
 const counters = document.querySelectorAll(".counter");
 
-counters.forEach(counter => {
+const startCounter = () => {
 
-    const updateCounter = () => {
+    counters.forEach(counter => {
 
-        const target = +counter.dataset.target;
+        const target = Number(counter.dataset.target);
 
-        const current = +counter.innerText;
+        let current = 0;
 
         const increment = target / 100;
 
-        if(current < target){
+        const updateCounter = () => {
 
-            counter.innerText =
-            Math.ceil(current + increment);
+            current += increment;
 
-            setTimeout(updateCounter,20);
+            if(current < target){
 
-        }else{
+                counter.innerText = Math.ceil(current);
 
-            counter.innerText = target;
+                requestAnimationFrame(updateCounter);
+
+            }else{
+
+                counter.innerText = target;
+
+            }
+
+        };
+
+        updateCounter();
+
+    });
+
+};
+
+
+// OBSERVER
+
+const observer = new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("show");
 
         }
-    }
 
-    updateCounter();
+    });
+
+},{
+    threshold:0.2
+});
+
+
+// ANIMATION TARGETS
+
+document.querySelectorAll(
+".product-card,.stat-box,.about-content,.about-image,.cta"
+).forEach(el=>{
+
+    el.classList.add("hidden");
+
+    observer.observe(el);
+
+});
+
+
+// START COUNTER ONCE
+
+let counterStarted = false;
+
+const statsSection = document.querySelector(".stats");
+
+const statsObserver = new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting && !counterStarted){
+
+            startCounter();
+
+            counterStarted = true;
+
+        }
+
+    });
+
+},{
+    threshold:0.4
+});
+
+statsObserver.observe(statsSection);
+
+
+// HERO FADE
+
+window.addEventListener("load",()=>{
+
+    document.body.classList.add("loaded");
 
 });
