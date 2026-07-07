@@ -1,4 +1,6 @@
+// =====================
 // HEADER SCROLL EFFECT
+// =====================
 
 const header = document.querySelector("header");
 
@@ -7,19 +9,21 @@ window.addEventListener("scroll", () => {
     if(window.scrollY > 50){
 
         header.style.background =
-        "rgba(5,7,13,.95)";
+        "rgba(5,7,13,0.96)";
 
     }else{
 
         header.style.background =
-        "rgba(5,7,13,.85)";
+        "rgba(5,7,13,0.88)";
 
     }
 
 });
 
 
-// SCROLL ANIMATION
+// =====================
+// SCROLL FADE ANIMATION
+// =====================
 
 const observer = new IntersectionObserver((entries)=>{
 
@@ -37,18 +41,22 @@ const observer = new IntersectionObserver((entries)=>{
     threshold:0.15
 });
 
+
 document.querySelectorAll(
-".about-inner,.product-showcase,.app-card,.contact-inner"
-).forEach(el=>{
+".about-inner, .product-showcase, .app-card, .contact-inner"
+)
+.forEach((element)=>{
 
-    el.classList.add("fade");
+    element.classList.add("fade");
 
-    observer.observe(el);
+    observer.observe(element);
 
 });
 
 
+// =====================
 // SMOOTH SCROLL
+// =====================
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
 
@@ -56,13 +64,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
 
         e.preventDefault();
 
+        const target =
         document.querySelector(
             this.getAttribute("href")
-        ).scrollIntoView({
+        );
 
-            behavior:"smooth"
+        if(target){
 
-        });
+            target.scrollIntoView({
+                behavior:"smooth"
+            });
+
+        }
 
     });
 
