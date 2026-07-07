@@ -1,32 +1,25 @@
-// =====================
-// HEADER EFFECT
-// =====================
+// HEADER SCROLL EFFECT
 
 const header = document.querySelector("header");
 
 window.addEventListener("scroll", () => {
 
-    if (window.scrollY > 50) {
+    if(window.scrollY > 50){
 
         header.style.background =
-        "rgba(5,5,5,.95)";
+        "rgba(5,7,13,.95)";
 
-        header.style.borderBottom =
-        "1px solid rgba(255,255,255,.08)";
-
-    } else {
+    }else{
 
         header.style.background =
-        "rgba(5,5,5,.85)";
+        "rgba(5,7,13,.85)";
 
     }
 
 });
 
 
-// =====================
-// FADE IN ANIMATION
-// =====================
+// SCROLL ANIMATION
 
 const observer = new IntersectionObserver((entries)=>{
 
@@ -45,7 +38,7 @@ const observer = new IntersectionObserver((entries)=>{
 });
 
 document.querySelectorAll(
-".about-content,.product-card,.app-box,.contact"
+".about-inner,.product-showcase,.app-card,.contact-inner"
 ).forEach(el=>{
 
     el.classList.add("fade");
@@ -55,9 +48,7 @@ document.querySelectorAll(
 });
 
 
-// =====================
 // SMOOTH SCROLL
-// =====================
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
 
