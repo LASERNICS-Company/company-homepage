@@ -1,58 +1,25 @@
-// HEADER EFFECT
+// 헤더 효과
 
-const header = document.getElementById("header");
+const header = document.querySelector("header");
 
 window.addEventListener("scroll", () => {
 
     if(window.scrollY > 50){
-        header.classList.add("scrolled");
+
+        header.style.background = "rgba(5,7,13,.92)";
+        header.style.boxShadow = "0 10px 40px rgba(0,0,0,.35)";
+
     }else{
-        header.classList.remove("scrolled");
+
+        header.style.background = "rgba(5,7,13,.65)";
+        header.style.boxShadow = "none";
+
     }
 
 });
 
 
-// COUNTER
-
-const counters = document.querySelectorAll(".counter");
-
-const startCounter = () => {
-
-    counters.forEach(counter => {
-
-        const target = Number(counter.dataset.target);
-
-        let current = 0;
-
-        const increment = target / 100;
-
-        const updateCounter = () => {
-
-            current += increment;
-
-            if(current < target){
-
-                counter.innerText = Math.ceil(current);
-
-                requestAnimationFrame(updateCounter);
-
-            }else{
-
-                counter.innerText = target;
-
-            }
-
-        };
-
-        updateCounter();
-
-    });
-
-};
-
-
-// OBSERVER
+// 스크롤 애니메이션
 
 const observer = new IntersectionObserver((entries)=>{
 
@@ -67,54 +34,50 @@ const observer = new IntersectionObserver((entries)=>{
     });
 
 },{
-    threshold:0.2
+    threshold:0.15
 });
 
-
-// ANIMATION TARGETS
-
 document.querySelectorAll(
-".product-card,.stat-box,.about-content,.about-image,.cta"
+".card,.tech-card,.app-card,.contact-box"
 ).forEach(el=>{
 
     el.classList.add("hidden");
-
     observer.observe(el);
 
 });
 
 
-// START COUNTER ONCE
+// Hero 이미지 패럴랙스
 
-let counterStarted = false;
+const heroImage = document.querySelector(".hero-image img");
 
-const statsSection = document.querySelector(".stats");
+document.addEventListener("mousemove",(e)=>{
 
-const statsObserver = new IntersectionObserver((entries)=>{
+    const x = (window.innerWidth / 2 - e.clientX) / 40;
+    const y = (window.innerHeight / 2 - e.clientY) / 40;
 
-    entries.forEach(entry=>{
+    heroImage.style.transform =
+    `translate(${x}px, ${y}px)`;
 
-        if(entry.isIntersecting && !counterStarted){
-
-            startCounter();
-
-            counterStarted = true;
-
-        }
-
-    });
-
-},{
-    threshold:0.4
 });
 
-statsObserver.observe(statsSection);
 
+// 부드러운 앵커 이동
 
-// HERO FADE
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
 
-window.addEventListener("load",()=>{
+    anchor.addEventListener("click",function(e){
 
-    document.body.classList.add("loaded");
+        e.preventDefault();
+
+        document.querySelector(
+            this.getAttribute("href")
+        ).scrollIntoView({
+
+            behavior:"smooth"
+
+        });
+
+    });
 
 });
